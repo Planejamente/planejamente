@@ -22,10 +22,6 @@ const Home = () => {
     return (
         <div>
             <div className={styles.background}>
-                <div className={styles.starBackground}>
-                    <img src={imgEstrelas1} alt="Estrela 1" className={styles.starImage} />
-                    <img src={imgEstrelas2} alt="Estrela 2" className={styles.starImage} />
-                </div>
                 <img src={imgPrincipal} alt="Imagem de fundo" className={styles.backgroundImage} />
                 <NavBar logo={Logo} />
                 <div className={styles.container}>
