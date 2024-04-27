@@ -1,3 +1,50 @@
-* {
-    background-color: #000;
+.background {
+  background-color: #0F4C81; 
+  height: 100vh; 
+  width: 100%; 
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: flex-start; 
+  position: relative;
+  overflow-x: hidden; 
+}
+
+.backgroundImage {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  width: auto; 
+  height: 100%; 
+}
+
+.content {
+  position: relative; 
+  z-index: 1; 
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 12%; 
+  transform: translateY(-50%);
+  color: white; 
+}
+
+.container h1 {
+  font-size: 4rem; 
+  font-weight: bold; 
+  margin-bottom: 1rem;
+  margin-top: -5rem; 
+}
+
+.container h1 span {
+  display: block; 
+  font-style: italic; 
+}
+.conversarLink {
+  color: white;
+  text-decoration: underline; 
+  cursor: pointer;
+  font-size: 2.5rem; 
+  margin-top: 3rem; 
 }
