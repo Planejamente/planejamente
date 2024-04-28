@@ -1,25 +1,25 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import './navbar.css';
-import logo from '../../utils/assets/logo2.jpg';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./navbar.css";
+import logo from "../../utils/assets/logo2.jpg";
 
 function Componente() {
   const navigate = useNavigate();
 
   const goToHome = () => {
-    navigate('/home'); 
+    navigate("/home");
   };
 
   const goToParaVoce = () => {
-    navigate('/para-voce'); 
+    navigate("/para-voce");
   };
 
   const goToParaEspecialistas = () => {
-    navigate('/para-especialistas'); 
+    navigate("/para-especialistas");
   };
 
   const goToLogin = () => {
-    navigate('/login'); 
+    navigate("/login");
   };
 
   return (
@@ -29,12 +29,20 @@ function Componente() {
       </div>
       <div className="navbar-menu"></div>
       <div className="navbar-links">
-        <span className="navbar-link" onClick={goToHome}>Home</span>
-        <span className="navbar-link" onClick={goToParaVoce}>Para você</span>
-        <span className="navbar-link" onClick={goToParaEspecialistas}>Para Especialistas</span>
+        <span className="navbar-link" onClick={goToHome}>
+          Home
+        </span>
+        <span className="navbar-link" onClick={goToParaVoce}>
+          Para você
+        </span>
+        <span className="navbar-link" onClick={goToParaEspecialistas}>
+          Para Especialistas
+        </span>
         <div className="navbar-login">
           <div className="login-container" onClick={goToLogin}>
-            <div className="login-button"><span className="login-text">Login</span></div>
+            <div className="login-button">
+              <span className="login-text">Login</span>
+            </div>
           </div>
         </div>
       </div>
