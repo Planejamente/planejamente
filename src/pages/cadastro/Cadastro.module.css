@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    font-family: Fredoka-r, sans-serif;
+}
+
+body {
+    background: url("../../utils/assets/background_dark.svg") repeat;
+
+}
+
+.container {
+    margin: 120px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+
+.backBtn {
+    width: 100%;
+    padding: 16px 16px 32px 16px;
+}
+
+.leftStep {
+    width: 30vw;
+    height: 66vh;
+    border: 2px solid #fff;
+    border-radius: 16px 0 0 16px;
+
+}
+
+
+.rightStep {
+    width: 30vw;
+    height: 66vh;
+    border: 2px solid #fff;
+    border-radius:0 16px 16px 0;
+
+}
+
+.infoDiv {
+    width: 30vw;
+    height: 66vh;
+    position: absolute;
+    right: 50vw;
+    border-radius:0 16px 16px 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoDiv h1 {
+    text-align: center;
+    color: #0F4C81;
+    font-size: 28px;
+    font-family: "Fredoka-m", sans-serif;
+    margin: 81px 0 0 0;
+}
+
+.infoDiv h3 {
+    text-align: center;
+    color: #0F4C81;
+    font-family: "Fredoka-l", sans-serif;
+    margin: 50px 0;
+}
+.infoDiv button {
+    width: 18vw;
+    height: 5vh;
+    border-radius: 50px;
+    color: #fff;
+    background: #0F4C81;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fredoka-r", sans-serif;
+    font-size: 14px;
+}
+.infoDiv button img {
+    width: 20px;
+    margin: 0 0 0 5px;
+}
+
+
+
+.headerStep {
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-family: "Fredoka-m", sans-serif;
+}
+
+.googleButton {
+    display: flex;
+    justify-content: center;
+
+}
+
+.googleButton img {
+    margin: 60px;
+    height: 24vh
+}
