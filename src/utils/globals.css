@@ -1,16 +1,16 @@
 @font-face {
-    font-family: "Fredoka";
+    font-family: "Fredoka-r";
     src: url("../utils/fonts/Fredoka-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Fredoka";
+    font-family: "Fredoka-b";
     src: url("../utils/fonts/Fredoka-Bold.ttf") format("truetype");
     font-weight: bold;
 }
 
 @font-face {
-    font-family: "Fredoka";
+    font-family: "Fredoka-m";
     src: url("../utils/fonts/Fredoka-Medium.ttf") format("truetype");
 }
 
