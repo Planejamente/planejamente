@@ -6,7 +6,7 @@ import googleButton from "../../utils/assets/google_signup.png";
 import InputMod from "../InputMod/InputMod";
 
 
-const FieldSection = ({ mode, step }) => {
+const FieldSection = ({ mode, step, onChangeMode }) => {
     const [name, setName] = React.useState('');
     const [birth, setBirth] = React.useState('');
     const [sex, setSex] = React.useState('');
@@ -22,6 +22,10 @@ const FieldSection = ({ mode, step }) => {
             borderRadius: '0 16px 16px 0',
         },
     };
+
+    const passar = (event) => {
+      onChangeMode()
+    }
 
     const handleCpfChange = (event) => {
         let formattedCpf = event.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
