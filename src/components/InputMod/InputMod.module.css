@@ -1,0 +1,27 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 100%;
+
+}
+
+label {
+    color: #fff;
+    font-size: 14px;
+}
+input {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    
+}
+
+::placeholder {
+    color: #fff;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

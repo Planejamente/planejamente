@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 import NavBar from "../../components/NavBar/navbar";
 import Logo from "../../utils/assets/logo2.jpg";
-import imgPrincipal from "../../utils/assets/fundo.svg";
+import imgPrincipal from "../../utils/assets/fundo.png";
 import celular from "../../utils/assets/Group_192_1.png";
 import bolas from "../../utils/assets/Group_201.svg";
 import agenda from "../../utils/assets/Group_27_1.svg";
