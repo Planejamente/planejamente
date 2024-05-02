@@ -32,23 +32,12 @@ body {
     height: 66vh;
     border: 2px solid #fff;
     border-radius: 16px 0 0 16px;
-
 }
 
-
-.rightStep {
-    width: 30vw;
-    height: 66vh;
-    border: 2px solid #fff;
-    border-radius:0 16px 16px 0;
-
-}
 
 .infoDiv {
     width: 30vw;
     height: 66vh;
-    position: absolute;
-    right: 50vw;
     border-radius:0 16px 16px 0;
     background: #fff;
     display: flex;
@@ -69,6 +58,7 @@ body {
     color: #0F4C81;
     font-family: "Fredoka-l", sans-serif;
     margin: 50px 0;
+    white-space: pre-wrap;
 }
 .infoDiv button {
     width: 18vw;
