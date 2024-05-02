@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "Fredoka-Regular";
+    src: url("../../utils/fonts/Fredoka-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Fredoka-light";
+    src: url("../../utils/fonts/Fredoka-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Fredoka";
+    src: url("../../utils/fonts/Fredoka-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Fredoka";
+    src: url("../../utils/fonts/Fredoka-Medium.ttf") format("truetype");
+}
+
+body{
+    background-image: url(../../utils/assets/background-form.svg);
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Fredoka", sans-serif;
+    color: #ffffff;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content{
+    /* margin-top: 7vh; */
+    display: flex;
+
+}
+
+.cadastro{
+    font-weight: 100;
+    margin-top: 4vh;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 30px;
+}
+
+.bntGoogle{
+    width: 13vw;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.bntGoogle:hover{
+    transform: scale(1.1);
+}
+
+.welc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh;
+    font-size: 30px;
+}
+
+.bntCadastro{
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    text-decoration: none;
+}
+
+.bntCadastro:hover{
+    color: #4EACFF;
+}
