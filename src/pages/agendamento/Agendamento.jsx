@@ -1,14 +1,18 @@
 import React from "react";
 import Calendario from "../../components/Calendario/calendario";
-// import styles from "./Agendamento.module.css";
+import Footer from "../../components/Footer/footer";
+import Buscar from "../../components/Buscar/buscar";
+import styles from "./Agendamento.module.css";
 
 const Agendamento = () => {
 
     return (
-        <div>
-            <h1>Agendamento</h1>
+        <content>
+            <p className={styles['title']}>Escolha o melhor dia e horário para você</p>
             <Calendario />
-        </div>
+            <Buscar />
+            <Footer />
+        </content>
     );
 };
 

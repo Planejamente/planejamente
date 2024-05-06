@@ -1,33 +1,9 @@
-@font-face {
-    font-family: "Fredoka-Regular";
-    src: url("../../utils/fonts/Fredoka-Regular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Fredoka-light";
-    src: url("../../utils/fonts/Fredoka-Light.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Fredoka";
-    src: url("../../utils/fonts/Fredoka-Bold.ttf") format("truetype");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Fredoka";
-    src: url("../../utils/fonts/Fredoka-Medium.ttf") format("truetype");
-}
-
-body{
-    background-image: url(../../utils/assets/background-form.svg);
-    background-size: cover;
-    margin: 0;
-    padding: 0;
+content{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    font-family: "Fredoka", sans-serif;
-    color: #ffffff;
-}
+    flex-direction: column;
+    gap: 2vh;
+    margin: 0 0 5vh 0;
+    
+} 

@@ -1,9 +1,11 @@
 import React from "react";
+import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 
 const Calendario = () => {
     return (
         <div>
-            <h1>Calendário</h1>
+            <Calendar />
         </div>
     );
 }
