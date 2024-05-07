@@ -133,6 +133,23 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     toast.success("Cadastro Realizado com Sucesso!");
   }
 
+  // (11) 99999-9999
+  const handlePhoneChange = (event) => {
+    let formattedPhone = event.target.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    if(formattedPhone.length <= 0) {
+      formattedPhone = formattedPhone.replace(/(\d{2})/, "($1)");
+    }
+    else if(formattedPhone.length <= 7) {
+      formattedPhone = formattedPhone.replace(/(\d{2})(\d{1,5})/, "($1) $2");
+    }
+    else {
+      formattedPhone = formattedPhone.replace(/(\d{2})(\d{1,4})(\d{1,4})/, "($1) $2-$3");
+    }
+    if(formattedPhone.length <= 15) {
+      setTelefone(formattedPhone.slice(0, 15));
+    }
+  }
+
   const handleCepChange = (event) => {
     let formattedCep = event.target.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
     if(formattedCep.length <= 5) {
@@ -147,21 +164,40 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
 
   }
 
+  async function verifyCEP(cep) {
+    let formattedCep = cep.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    
+    if (formattedCep.length !== 8) {
+      toast.error("CEP Inválido");
+      return false;
+    }
+    await axios.get(`https://brasilapi.com.br/api/cep/v1/{cep}${formattedCep}`)
+    .then((response) => {
+      if(response.status === 200) {
+        return true;
+      }
+      toast.error("CEP Inválido");
+      return false;
+    })
+    
+
+  }
+  
   const verifyCPF = (cpf) => {
     let soma = 0;
     let resto;
     cpf = cpf.replace(/\D/g, '');
-
+    
     if (cpf === "00000000000") {
       toast.error("CPF Inválido");
       return false;
     }
-  
+    
     for (let i = 1; i <= 9; i++) {
       soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
     }
     resto = (soma * 10) % 11;
-  
+    
     if (resto === 10 || resto === 11) {
       resto = 0;
     }
@@ -169,13 +205,13 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       toast.error("CPF Inválido");
       return false;
     }
-  
+    
     soma = 0;
     for (let i = 1; i <= 10; i++) {
       soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
     }
     resto = (soma * 10) % 11;
-  
+    
     if (resto === 10 || resto === 11) {
       resto = 0;
     }
@@ -186,24 +222,10 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   
     return true;
   };
+  
+  
 
-  async function verifyCEP(cep) {
-    let formattedCep = cep.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-    
-    if (formattedCep.length !== 8) {
-      toast.error("CEP Inválido");
-      return false;
-    }
-    await axios.get(`https://brasilapi.com.br/api/cep/v1/{cep}${formattedCep}`)
-    .then((response) => {
-      console.log(response.data);
-    })
-    
-
-  }
-
-
-
+  
   switch (mode) {
     case "pac":
       switch (step) {
@@ -346,7 +368,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   value={telefone}
                   label="Telefone"
                   name="Telefone"
-                  onChange={(e) => setTelefone(e.target.value)}
+                  onChange={handlePhoneChange}
                 />
                 <button onClick={SignUpPsi} className={styles.btnSignUp}>Último Passo <img src={arrowRightDark} alt="Seta para Criar Conta" /></button>
               </div>
@@ -374,6 +396,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 type="text"
                 value={CEP}
                 label="CEP"
+                req={"t"}
                 name="CEP"
                 onChange={handleCepChange}
               />
@@ -384,7 +407,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 label="CPF"
                 req={"t"}
                 name="CPF"
-                onChange={(e) => setCpf(e.target.value)}
+                onChange={handleCpfChange}
               />
               <InputMod
                 margin={"16px"}
