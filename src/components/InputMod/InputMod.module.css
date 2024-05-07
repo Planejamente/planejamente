@@ -25,3 +25,7 @@ input {
 input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
+
+.req {
+    color: #f00;
+}

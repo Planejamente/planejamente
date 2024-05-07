@@ -21,5 +21,10 @@
     src: url("../utils/fonts/Fredoka-Light.ttf") format("truetype");
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 
 

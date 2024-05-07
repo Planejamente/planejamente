@@ -6,11 +6,14 @@ import arrowRight from "../../utils/assets/arrow_right.svg";
 import googleButton from "../../utils/assets/google_signup.png";    
 import FieldSection from "../../components/FieldSection/FieldSection";
 import InputMod from "../../components/InputMod/InputMod";
+import ModeSection from "../../components/ModeSection/ModeSection";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Cadastro = () => {
 
-    const [mode, setMode] = React.useState('pac');
-    const [step, setStep] = React.useState(2);
+    const [mode, setMode] = React.useState('psi');
+    const [step, setStep] = React.useState(3);
     const [name, setName] = React.useState('Nome');
     const [birth, setBirth] = React.useState('');
     const changeMode = () => {
@@ -22,19 +25,6 @@ const Cadastro = () => {
     const backStep = () => {
         setStep(step - 1);
     }
-
-    // const infoText = {
-    //     infoPac: {
-    //         head: 'Sou Paciente',
-    //         text: 'Quero cuidar e fortalecer minha\nmente para um futuro mais sólido.',
-    //         button: 'Seguir como Paciente',
-    //     },
-    //     infoPsi: {
-    //         head: 'Sou Psicólogo',
-    //         text: 'Estou aqui para ajudar pessoas a\nencontrarem sua melhor versão.',
-    //         button: 'Seguir como Psicólogo',
-    //     },
-    // };
 
     // const infoStyle = {
     //     pac: {
@@ -63,42 +53,19 @@ const Cadastro = () => {
     //         borderRadius: '0 16px 16px 0',
     //     },
     // };
-
+    
 
 
 
     return (
         <>
-            <FieldSection mode={mode} step={step} />
+        <div className={styles.container}>
+            <FieldSection mode={mode} step={step} onGoStep={goStep} onBackStep={backStep}  />
+            <ModeSection mode={mode} step={step} onGoStep={goStep} onBackStep={backStep} changeMode={changeMode} />
+            <ToastContainer />
+        </div>
         </>
-        // <div className={styles.body}>
-        //     {/*    navbar*/}
-        //     <div className={styles.container}>
-        //         <div style={stepStyle[mode]} className={styles.leftStep}>
-        //             <div className={styles.backBtn}>
-        //             <button > {/*onClick={backPage}*/}
-        //                 <img src={arrowLeft} alt="Botão para voltar"/>
-        //             </button>
-        //             </div>
-        //             <div className={styles.headerStep}>
-        //                 <h1>Sou Paciente!</h1>
-        //             </div>
-        //             <div className={styles.googleButton}>
-        //                 <button>{/*Google Action Pac*/}
-        //                     <img src={googleButton} alt="Botão de cadastro Google"/>
-        //                 </button>
-        //             </div>
 
-        //         </div>
-        //         <div style={infoStyle[mode]} className={styles.infoDiv}>
-        //             <h1>{infoText[infoValue].head}</h1>
-        //             <h3>{infoText[infoValue].text}</h3>
-        //             <button onClick={changeMode}>{infoText[infoValue].button}  <img src={arrowRight} alt="Botão para seguir cadastro de psicólogo"/></button>
-        //         </div>
-
-        //     </div>
-
-        // </div>
     );
 }
 
