@@ -13,7 +13,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div className={styles['body']}>
             <div className={styles["logo"]}>
                 <img src={Logo} alt="Logo" />
             </div>

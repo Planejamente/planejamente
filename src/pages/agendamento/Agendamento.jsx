@@ -8,7 +8,7 @@ import Footer from "../../components/Footer/footer";
 const Agendamento = () => {
 
     return (
-        <div>
+        <div className={styles['body']}>
             <h1 className={styles['title']}>Escolha o melhor dia e horário para você</h1>
             <div className={styles['inputs']}>
                 <Calendario />

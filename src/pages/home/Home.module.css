@@ -1,3 +1,9 @@
+/* Estilos para o corpo e o HTML */
+body, html {
+  margin: 0;
+  padding: 0;  
+}
+
 /* Estilos para o contêiner de fundo */
 .background {
   background-color: #0F4C81; 
