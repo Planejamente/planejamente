@@ -1,8 +1,8 @@
-footer{
-    position: fixed;
+/* footer{
+    position: relative;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 98.7vw;
 }
 
 .links{
@@ -36,6 +36,22 @@ footer{
 .linksLogos{
     display: flex;
     width: 4vw;
+   height: 4vh;
+   gap: 2vw;
+} */
+
+/* Outro */
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    gap: 2.5vw;
+}
+
+.linksLogos{
+    display: flex;
    height: 4vh;
    gap: 2vw;
 }

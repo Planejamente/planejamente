@@ -88,3 +88,9 @@ body{
 .bntCadastro:hover{
     color: #4EACFF;
 }
+
+@media (max-width: 600px) {
+    .bntGoogle{
+        width: 40vw;
+    }
+}
