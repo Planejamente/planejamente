@@ -7,6 +7,7 @@ main {
     align-items: center;
 }
 
+
 .backBtn {
     width: 100%;
     padding: 16px 16px 8px 16px;
@@ -15,8 +16,8 @@ main {
 .header {
     text-align: center;
     color: #fff;
-    font-size: 14px;
     font-family: "Fredoka-m", sans-serif;
+
 }
 
 .googleButton {
@@ -26,7 +27,7 @@ main {
 }
 
 .googleButton img {
-    margin: 60px;
+    margin: 60px 0 60px 0;
     height: 28vh
 }
 
@@ -35,4 +36,16 @@ main {
     flex-direction: column;
     align-items: center;
     width: 80%;
+}
+
+.btnSignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #0F4C81;
+    border-radius: 40px;
+    width: 100%;
+    padding: 8px 0 8px 0;
+    font-size: 18px;
 }

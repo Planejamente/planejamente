@@ -6,7 +6,7 @@ import Cadastro from "./pages/cadastro/Cadastro";
 function App() {
   return (
     <>
-      < Cadastro />
+      < Router />
     </>
   );
 }

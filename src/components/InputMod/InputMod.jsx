@@ -1,16 +1,18 @@
 import {React} from "react";
 import styles from "./InputMod.module.css";
 
-const InputMod = ({ type, label, value, name, onChange, padding, margin }) => {
+const InputMod = ({ type, label, value, name, onChange, padding, margin, req }) => {
 
     const today = new Date();
     const maxDate = new Date(today.getFullYear() - 15, today.getMonth(), today.getDate()).toISOString().split('T')[0];
   
-
   return (
     <>
       <div className={styles.main} style={{ padding: padding, margin: margin }}>
-        <label>{label}</label>
+        <label>
+          {label}
+          {label && req != null && <span className={styles.req}>*</span>}
+        </label>
         <input 
         type={type} 
         value={value} 
