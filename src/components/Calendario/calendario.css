@@ -1,0 +1,22 @@
+.react-calendar{
+    font-family: 'Fredoka-regular', sans-serif;
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 10%;
+}
+
+.react-calendar__navigation__label {
+    font-family: 'Fredoka-regular', sans-serif;
+    text-transform: capitalize;
+    font-size: medium;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+    color: black;
+}
+
+abbr {
+    text-decoration: none;
+}

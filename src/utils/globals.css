@@ -27,4 +27,27 @@
 }
 
 
+*{
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* ::-webkit-scrollbar {
+    width: 0.8rem; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ffff;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+} */
+
 
