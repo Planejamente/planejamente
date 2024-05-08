@@ -3,7 +3,6 @@
     flex-direction: column;
     color: #fff;
     width: 100%;
-
 }
 
 label {
@@ -17,7 +16,7 @@ input {
     border-bottom: 1px solid #fff;
     outline: none;
     font-size: 14px;
-    
+    background-color: transparent;    
 }
 
 ::placeholder {

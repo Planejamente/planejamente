@@ -251,9 +251,9 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 <h1>Sou Paciente!</h1>
               </div>
               <div className={styles.googleButton}>
-                <button onClick={googleLoginPac}>
+                <button>
                   {/*Google Action Pac*/}
-                  <img src={googleButton} alt="Botão de cadastro Google" />
+                  <img onClick={googleLoginPac} src={googleButton} alt="Botão de cadastro Google" />
                 </button>
               </div>
             </main>
