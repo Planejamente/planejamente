@@ -47,7 +47,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     margin: 6vh;
+=======
+    margin: 10vh;
+>>>>>>> 0bbf9a34cf38c42ebaaf0c6dd3a395aa61767bf0
     font-size: 30px;
 }
 

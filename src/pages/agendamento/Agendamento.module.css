@@ -1,0 +1,42 @@
+.body{
+    background-image: url(../../utils/assets/background-form.svg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #ffffff;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+}
+
+.TimePicker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    margin: 0 0 5vh 0;
+}
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+    margin: 5vh ;
+}
+
+.bntBusca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+    margin: 0 0 5vh 0;
+}
