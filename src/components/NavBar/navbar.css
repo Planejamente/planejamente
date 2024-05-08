@@ -22,7 +22,8 @@
 .logo {
   width: 17vw; 
   height: auto; 
-  margin-left: 1vw;
+  margin-right: -3vw;
+  
 }
 
 .navbar-links {
@@ -31,6 +32,7 @@
   font: 1.2rem 'Roboto', sans-serif;
   margin-left: 30%; 
   color: white;
+  cursor: pointer;
 }
 
 .navbar-links > span {
