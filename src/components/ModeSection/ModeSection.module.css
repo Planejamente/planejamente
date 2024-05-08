@@ -1,0 +1,62 @@
+main {
+    width: 30vw;
+    height: 66vh;
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main.mode {
+    background-color: #fff;
+    color: #0F4C81;
+}
+
+.backBtn {
+    width: 100%;
+    padding: 16px 16px 8px 16px;
+}
+
+.header {
+}
+
+.hOne {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    padding: 59px 0 0 0;
+    width: 100%;
+}
+
+main h3 {
+    font-family: 'Fredoka-l';
+    margin: 48px 0 48px 0;
+    text-align: center;
+}
+
+.btnMode {
+    background-color: #0F4C81;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 40px;
+    width: 80%;
+    padding: 8px 0 8px 0;
+    font-size: 18px;
+}
+
+.steps h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.steps {
+    height: 100%;
+    display: flex;
+    align-items: center;  
+    justify-content: center; 
+    flex-direction: column; 
+}
+

@@ -1,0 +1,57 @@
+/* footer{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 98.7vw;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    gap: 2.5vw;
+    margin: 0 0 -9vh 0;
+}
+
+.both-circles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circleLeft{
+    width: 1.5vw;
+}
+
+.circleRight{
+    width: 1.5vw;
+}
+
+.footer-logo{
+    width: 10vw;
+    margin: 0 6vw;
+}
+
+.linksLogos{
+    display: flex;
+    width: 4vw;
+   height: 4vh;
+   gap: 2vw;
+} */
+
+/* Outro */
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    gap: 2.5vw;
+}
+
+.linksLogos{
+    display: flex;
+   height: 4vh;
+   gap: 2vw;
+}

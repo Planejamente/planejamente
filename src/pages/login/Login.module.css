@@ -1,0 +1,68 @@
+.body{
+    background-image: url(../../utils/assets/background-form.svg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Fredoka", sans-serif;
+    color: #ffffff;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cadastro{
+    font-weight: 100;
+    margin-top: 4vh;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 30px;
+}
+
+.bntGoogle{
+    width: 13vw;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.bntGoogle:hover{
+    transform: scale(1.1);
+}
+
+.welc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh;
+    font-size: 30px;
+}
+
+.bntCadastro{
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    text-decoration: none;
+}
+
+.bntCadastro:hover{
+    color: #4EACFF;
+}
+
+@media (max-width: 600px) {
+    .bntGoogle{
+        width: 40vw;
+    }
+}
