@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,10 +19,17 @@ body {
 
 html {
   height: 100vh;
-}
+} */
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Fredoka-r, sans-serif;
+  height: 100vh;
+  background: url("../../utils/assets/background_dark.svg") repeat;
+
 }
