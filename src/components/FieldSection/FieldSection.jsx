@@ -122,9 +122,16 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
 
   }
 
-  const SignUpPsi = () => {
-    if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(telefone, "Telefone")) {
+  async function SignUpPsi() {
+    if(step === 2) {
+    if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(telefone, "Telefone")){
       return
+    }
+  }
+    if(step === 3) {
+      if(!(await verifyCEP(CEP)) || !verifyValue(cpf, "CPF") || !verifyCPF(cpf) || !verifyValue(CNPJ, "CNPJ") || !verifyValue(CRP, "CRP")) {
+        return;
+      }
     }
     if(step === 2) {
       onGoStep();
@@ -176,8 +183,10 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       if(response.status === 200) {
         return true;
       }
+      if(response.status === 404) {
       toast.error("CEP Inválido");
       return false;
+      }
     })
     
 
@@ -344,14 +353,20 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 <InputMod
                   margin={"16px"}
                   type="text"
+                  req={"t"}
+
                   label="Nome"
+                  value={name}
                   name="Nome"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <InputMod
                   margin={"16px"}
                   type="date"
+                  req={"t"}
+
                   label="Data de Nascimento"
+                  value={birth}
                   name="Data de Nascimento"
                   onChange={(e) => setBirth(e.target.value)}
                 />
@@ -359,6 +374,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   margin={"16px"}
                   type="select"
                   label="Sexo"
+                  req={"t"}
+
                   name="Sexo"
                   onChange={(e) => setSex(e.target.value)}
                 />
@@ -368,6 +385,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   value={telefone}
                   label="Telefone"
                   name="Telefone"
+                req={"t"}
+
                   onChange={handlePhoneChange}
                 />
                 <button onClick={SignUpPsi} className={styles.btnSignUp}>Último Passo <img src={arrowRightDark} alt="Seta para Criar Conta" /></button>
