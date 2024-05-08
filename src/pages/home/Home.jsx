@@ -8,6 +8,7 @@ import celular from "../../utils/assets/Group_192_1.png";
 import bolas from "../../utils/assets/Group_201.svg";
 import agenda from "../../utils/assets/Group_27_1.svg";
 
+
 const Home = () => {
   const navigate = useNavigate();
 

@@ -39,6 +39,7 @@ body, html {
 /* Estilos para o cabeçalho */
 .container h1 {
   font-size: 4rem; 
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold; 
   margin-bottom: 1rem;
   margin-top: -5rem; 
@@ -51,6 +52,7 @@ body, html {
 }
 .paragraph{
   font-size: 1.2rem;
+  font-family: 'Fredoka-m', sans-serif;
   font-weight: bold;
   color: white;
   padding: 10px;
@@ -61,6 +63,7 @@ body, html {
 /* Estilos para o link de conversa */
 .conversarLink {
   color: white;
+  font-family: 'Fredoka-sb', sans-serif;
   text-decoration: underline; 
   cursor: pointer;
   font-size: 2.5rem; 
@@ -89,6 +92,7 @@ body, html {
 /* Estilos para o texto extra */
 .extraText {
   font-size: 3rem; 
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold; 
   margin-bottom: 1rem;
   color: white;
@@ -97,6 +101,7 @@ body, html {
 }
 .extraText1 {
   font-size: 1.5rem; 
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold; 
   margin-bottom: 1rem;
   color: white;
@@ -107,6 +112,7 @@ body, html {
 /* Estilos para o link "Confira" */
 .confiraLink {
   display: inline-block;
+  font-family: 'Fredoka-sb', sans-serif;
   color: #fff; 
   padding: 10px 30px;
   border-radius: 5px;
@@ -129,6 +135,7 @@ body, html {
 }
 .confiraLinkProfissionais{
   color: white;
+  font-family: 'Fredoka-sb', sans-serif;
   text-decoration: underline; 
   cursor: pointer;
   font-size: 2.5rem; 
@@ -144,6 +151,7 @@ body, html {
 
 .parte3Text{
   font-size: 3rem; 
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold; 
   margin-bottom: 1rem;
   color: white;
@@ -152,12 +160,12 @@ body, html {
 }
 .parte3Text1 {
   font-size: 1.5rem;
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold;
   margin-bottom: 1rem;
   color: white;
   padding: 10px;
   margin-right: 70px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .parte4{
@@ -175,6 +183,7 @@ body, html {
 }
 .parte4Text{
   font-size: 2.1rem; 
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold; 
   margin-bottom: 1rem;
   color: white;
@@ -184,6 +193,7 @@ body, html {
 
 .parte4Text1 {
   font-size: 2.5rem; 
+  font-family: 'Fredoka-b', sans-serif;
   font-weight: bold; 
   margin-bottom: 1rem;
   color: white;

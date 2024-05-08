@@ -21,17 +21,16 @@
     src: url("../utils/fonts/Fredoka-Light.ttf") format("truetype");
 }
 
-* {
+/* *{
     margin: 0;
     padding: 0;
 }
-
 
 *{
     height: auto;
     margin: 0;
     padding: 0;
-}
+} */
 
 /* ::-webkit-scrollbar {
     width: 0.8rem; 
