@@ -7,6 +7,7 @@ import imgPrincipal from "../../utils/assets/fundo.png";
 import celular from "../../utils/assets/Group_192_1.png";
 import bolas from "../../utils/assets/Group_201.svg";
 import agenda from "../../utils/assets/Group_27_1.svg";
+import calendar from "../../utils/assets/calender.webp";
 
 
 const Home = () => {
@@ -116,8 +117,29 @@ const Home = () => {
             piscar de olhos, a qualidade do seu atendimento e seu desempenho com
             dashboards inteligentes.
           </p>
+          <br />
         </div>
-    </div>
+      </div>
+
+      <div className={styles.parte4}>
+        <div className={styles.parte4Inner}>
+          <div className={styles.parte4Text2}>
+            <p>Agenda</p>
+          </div>
+          <div className={styles.textoEsquerdo}>
+            <p>
+              Chega de cadernos rabiscados, queremos facilitar para você, com a
+              integração ao Google Calendar, você terá uma visão organizada com
+              direito a lembretes
+            </p>
+          </div>
+        </div>
+        <br/>
+        <div >
+          <img src={calendar} alt="Descrição da imagem" className={styles.parte4Image} />
+        </div>
+      </div>
+
     </div>
   );
 };
