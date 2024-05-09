@@ -28,6 +28,9 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   const [CEP, setCEP] = React.useState("");
   const [CNPJ, setCNPJ] = React.useState("");
   const [CRP, setCRP] = React.useState("");
+  const navigate = useNavigate();
+
+
   const modeStyle = {
     pac: {
       transition: "transform 0.8s",
@@ -232,6 +235,9 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     return true;
   };
   
+  const backToLogin = () => {
+    navigate("/login");
+  };
   
 
   
@@ -244,7 +250,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
-                  <img src={arrowLeft} alt="Botão para voltar" />
+                  <img onClick={backToLogin} src={arrowLeft} alt="Botão para voltar" />
                 </button>
               </div>
               <div className={styles.header}>
@@ -319,7 +325,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
-                  <img src={arrowLeft} alt="Botão para voltar" />
+                  <img onClick={backToLogin} src={arrowLeft} alt="Botão para voltar" />
                 </button>
               </div>
               <div className={styles.header}>
