@@ -5,30 +5,43 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
+
 }
 
 
 .backBtn {
     width: 100%;
-    padding: 16px 16px 8px 16px;
+    margin-top: 16px;
+    /* padding: 16px 16px 8px 16px; */
 }
+.backBtn button{
+    background-color: transparent;
+    border: none;
+    margin-left: 3%;
+}
+
 
 .header {
     text-align: center;
     color: #fff;
-    font-family: "Fredoka-m", sans-serif;
+    font-family: "Fredoka-r", sans-serif;
 
 }
 
 .googleButton {
     display: flex;
     justify-content: center;
-
+    
 }
-
+.googleButton button {
+border: none;
+background-color:transparent;
+}
 .googleButton img {
+    cursor: pointer;
     margin: 60px 0 60px 0;
-    height: 28vh
+    height: 28vh;
 }
 
 .inputs {
@@ -39,6 +52,8 @@ main {
 }
 
 .btnSignUp {
+    font-family: "Fredoka-m", sans-serif;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +61,8 @@ main {
     color: #0F4C81;
     border-radius: 40px;
     width: 100%;
-    padding: 8px 0 8px 0;
+    padding: 1vh 0 1vh 0;
     font-size: 18px;
+    border: none;
+    cursor: pointer;
 }

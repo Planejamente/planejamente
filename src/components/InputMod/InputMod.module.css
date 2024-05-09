@@ -3,7 +3,6 @@
     flex-direction: column;
     color: #fff;
     width: 100%;
-
 }
 
 label {
@@ -12,12 +11,12 @@ label {
 }
 input {
     color: #fff;
-    padding: 10px;
+    padding: 2%;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
     font-size: 14px;
-    
+    background-color: transparent;    
 }
 
 ::placeholder {

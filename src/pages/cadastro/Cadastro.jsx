@@ -7,13 +7,12 @@ import googleButton from "../../utils/assets/google_signup.png";
 import FieldSection from "../../components/FieldSection/FieldSection";
 import InputMod from "../../components/InputMod/InputMod";
 import ModeSection from "../../components/ModeSection/ModeSection";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Cadastro = () => {
 
-    const [mode, setMode] = React.useState('psi');
-    const [step, setStep] = React.useState(3);
+    const [mode, setMode] = React.useState('pac');
+    const [step, setStep] = React.useState(1);
     const [name, setName] = React.useState('Nome');
     const [birth, setBirth] = React.useState('');
     const changeMode = () => {
@@ -25,34 +24,6 @@ const Cadastro = () => {
     const backStep = () => {
         setStep(step - 1);
     }
-
-    // const infoStyle = {
-    //     pac: {
-    //         transition: 'transform 0.8s',
-    //         transform: 'translate(0vw)',
-    //         borderRadius: '0 16px 16px 0',
-    //     },
-    //     psi: {
-    //         transition: 'transform 0.8s',
-    //         transform: 'translate(-30vw)',
-    //         borderRadius: '16px 0 0 16px',
-
-    //     },
-    // };
-
-    // const stepStyle = {
-    //     pac: {
-    //         transition: 'transform 0.8s',
-    //         transform: 'translate(0vw)',
-    //         borderRadius: '16px 0 0 16px',
-
-    //     },
-    //     psi: {
-    //         transition: 'transform 0.8s',
-    //         transform: 'translate(30vw)',
-    //         borderRadius: '0 16px 16px 0',
-    //     },
-    // };
     
 
 

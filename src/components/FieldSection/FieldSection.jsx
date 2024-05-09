@@ -14,9 +14,10 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 import axios from "axios";
-
-
+// var GoogleStrategy = require('passport-google-oauth20').Strategy;
+import Cookies from "js-cookie";
 
 const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   const [i, setI] = React.useState(1);
@@ -28,6 +29,11 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   const [CEP, setCEP] = React.useState("");
   const [CNPJ, setCNPJ] = React.useState("");
   const [CRP, setCRP] = React.useState("");
+  const [sub, setSub] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const navigate = useNavigate();
+
+
   const modeStyle = {
     pac: {
       transition: "transform 0.8s",
@@ -66,11 +72,40 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     }
   };
 
-  const handleGoogleSuccessPsi = (credentialResponse) => {
+  async function handleGoogleSuccessPsi(credentialResponse) {
     console.log("Login bem-sucedido:", credentialResponse);
     console.log(hasGrantedAllScopesGoogle(credentialResponse,
         "https://www.googleapis.com/auth/calendar"));
-    onGoStep();
+        await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ` + credentialResponse.access_token
+      }})
+      .then(async response => response.json())
+      .then(async data => {
+        setEmail(data.email);
+        setSub(data.sub);
+      
+  
+      await fetch("https://api-61hu.onrender.com/auth/login",
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          googleSub: data.sub
+        })
+      })
+      .then(response => {
+        if(response.status === 200){
+          toast.error("Usuário já cadastrado")
+        } else {
+          onGoStep();
+        }
+      })
+    })
   };
 
 
@@ -83,25 +118,58 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     onError: handleGoogleFailedPsi,
     scope: [
       "openid",
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
+      "profile",
+      "email",
       "https://www.googleapis.com/auth/calendar",
       "https://www.googleapis.com/auth/drive",
     ].join(" "),
-    flow: 'auth-code',
   });
 
-  const handleGoogleSuccessPac = (credentialResponse) => {
-    console.log("Login bem-sucedido:", credentialResponse);
+  async function handleGoogleSuccessPac(credentialResponse) {
 
-    onGoStep();
-  };
+    await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ` + credentialResponse.access_token
+    }})
+    .then(async response => response.json())
+    .then(async data => {
+      setEmail(data.email);
+      setSub(data.sub);
+
+
+    await fetch("https://api-61hu.onrender.com/auth/login",
+  
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: data.email,
+        googleSub: data.sub
+      })
+    })
+    .then(response => {
+      if(response.status === 200){
+        toast.error("Usuário já cadastrado")
+      } else {
+        onGoStep();
+      }
+    })
+  })
+  }
 
 
 
   const googleLoginPac = useGoogleLogin({
     onSuccess: handleGoogleSuccessPac,
     onError: handleGoogleSuccessPac,  
+    scope: [
+      "openid",
+      "profile",
+      "email"
+    ].join(" "),
     ux_mode: 'popup'
   });
 
@@ -114,21 +182,100 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     }
   }
 
-  const SignUpPac = () => {
-      if(!verifyValue(name, "Nome") && !verifyValue(birth, "Data de nascimento") && !verifyValue(cpf, "CPF") && !verifyCPF(cpf) && !verifyValue(birth, "Data de Nascimento") ) {
+  async function SignUpPac(){
+      if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(cpf, "CPF") || !verifyCPF(cpf)) {
         return;
       }
-      toast("Cadastro Realizado com Sucesso!");
+      await fetch("https://api-61hu.onrender.com/pacientes/register", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: name,
+          dataDeNascimento: birth,
+          telefone: telefone,
+          genero: sex,
+          email: email,
+          googleSub: sub,
+          endereco: null,
+          role: "USER"
+        })
+      })
+      .then(response => {
+        if(response.status === 201) {
+          toast.success("Cadastro Realizado com Sucesso!");
+          setTimeout(navigate("/agendamento"), 2000)
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
 
   }
 
-  const SignUpPsi = () => {
-    if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(telefone, "Telefone")) {
-      return
-    }
+  async function SignUpPsi() {
     if(step === 2) {
-      onGoStep();
+    if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(telefone, "Telefone")){
       return;
+    }
+    onGoStep();
+    return;
+  }
+    if(step === 3) {      
+      await fetch("https://api-61hu.onrender.com/psicologos/register", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: name,
+          dataDeNascimento: birth,
+          telefone: telefone.replace(/\D/g, ""),
+          genero: sex,
+          email: email,
+          googleSub: sub,
+          endereco: null,
+          role: "ADMIN",
+          crp: CRP,
+          cnpj: CNPJ,
+          cpf: cpf,
+          linkFotoPerfil: null,
+          idCalendarioDisponivel: "id_calendario_disp_exemplo",
+          idCalendarioConsulta: "id_calendario_cons_exemplo",
+          linkAnamnese: "url_exemplo_anamnese",
+          idAnamnese: "id_anamnese_exemplo",
+          linkFotoDeFundo: null
+        })
+      })
+      .then(async response => {
+        console.log(response);
+        if(response.status === 201) {
+          toast("Cadastro Realizado com Sucesso!");
+          // redirecionar para pagina inicial de psicologo(Bem vindo tananana)
+          await fetch("https://api-61hu.onrender.com/auth/login",
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            email: email,
+            googleSub: sub
+            })
+          })
+          .then(response => {
+            if(response.status === 200){
+              Cookies.set("JWT", response.token)
+            }
+          }
+        )
+          setTimeout(navigate("/psicologoBemVindo"), 2000)
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
     }
     toast.success("Cadastro Realizado com Sucesso!");
   }
@@ -176,8 +323,10 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       if(response.status === 200) {
         return true;
       }
+      if(response.status === 404) {
       toast.error("CEP Inválido");
       return false;
+      }
     })
     
 
@@ -223,6 +372,13 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     return true;
   };
   
+  const backToLogin = () => {
+    navigate("/login");
+  };
+
+  const googleTest = useGoogleLogin({
+    onSuccess: codeResponse => console.log(codeResponse)
+  });
   
 
   
@@ -235,16 +391,16 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
-                  <img src={arrowLeft} alt="Botão para voltar" />
+                  <img onClick={backToLogin} src={arrowLeft} alt="Botão para voltar" />
                 </button>
               </div>
               <div className={styles.header}>
                 <h1>Sou Paciente!</h1>
               </div>
               <div className={styles.googleButton}>
-                <button onClick={googleLoginPac}>
+                <button>
                   {/*Google Action Pac*/}
-                  <img src={googleButton} alt="Botão de cadastro Google" />
+                  <img onClick={googleLoginPac} src={googleButton} alt="Botão de cadastro Google" />
                 </button>
               </div>
             </main>
@@ -310,7 +466,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
-                  <img src={arrowLeft} alt="Botão para voltar" />
+                  <img onClick={backToLogin} src={arrowLeft} alt="Botão para voltar" />
                 </button>
               </div>
               <div className={styles.header}>
@@ -344,14 +500,20 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 <InputMod
                   margin={"16px"}
                   type="text"
+                  req={"t"}
+
                   label="Nome"
+                  value={name}
                   name="Nome"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <InputMod
                   margin={"16px"}
                   type="date"
+                  req={"t"}
+
                   label="Data de Nascimento"
+                  value={birth}
                   name="Data de Nascimento"
                   onChange={(e) => setBirth(e.target.value)}
                 />
@@ -359,6 +521,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   margin={"16px"}
                   type="select"
                   label="Sexo"
+                  req={"t"}
+
                   name="Sexo"
                   onChange={(e) => setSex(e.target.value)}
                 />
@@ -368,6 +532,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   value={telefone}
                   label="Telefone"
                   name="Telefone"
+                req={"t"}
+
                   onChange={handlePhoneChange}
                 />
                 <button onClick={SignUpPsi} className={styles.btnSignUp}>Último Passo <img src={arrowRightDark} alt="Seta para Criar Conta" /></button>
