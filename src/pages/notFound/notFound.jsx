@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './notFound.css';
-import NavBar from '../../../components/NavBar/navbar';
-import imgNotFound from '../../../utils/assets/boneco.svg';
-import Logo from "../../../utils/assets/logo2.jpg";
+import styles from './notFound.module.css';
+import NavBar from '../../components/NavBar/navbar';
+import imgNotFound from '../../utils/assets/boneco.svg';
+
 
 const NotFound = () => {
     return (
         <>
         <NavBar />
-        <div className={"content"}>
+        <div className={styles.content}>
         <h1>Página não encontrada</h1>
         <img src={imgNotFound} alt="Erro 404" />
         </div>
