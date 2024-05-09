@@ -22,6 +22,16 @@ function Componente() {
     navigate("/login");
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        behavior: "smooth",
+        top: section.offsetTop
+      });
+  }
+};
+
   return (
     <div className="custom-navbar">
       <div className="navbar-logo">
@@ -29,13 +39,13 @@ function Componente() {
       </div>
       <div className="navbar-menu"></div>
       <div className="navbar-links">
-        <span className="navbar-link" onClick={goToHome}>
+        <span className="navbar-link" onClick={() => scrollToSection("sectionHome")}>
           Home
         </span>
-        <span className="navbar-link" onClick={goToParaVoce}>
+        <span className="navbar-link" onClick={() => scrollToSection("sectionParaVoce")}>
           Para você
         </span>
-        <span className="navbar-link" onClick={goToParaEspecialistas}>
+        <span className="navbar-link" onClick={() => scrollToSection("sectionEspcialista")}>
           Para Especialistas
         </span>
         <div className="navbar-login">

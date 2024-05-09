@@ -219,3 +219,67 @@ body, html {
   margin-right: 70px; 
   margin-top: 200px;
 }
+
+
+.parte4Text2 {
+  font-size: 2.1rem;
+  font-family: 'Fredoka-b', sans-serif;
+  font-weight: bold;
+  color: white;
+  
+}
+
+/* Estilos para o texto à esquerda da imagem */
+.textoEsquerdo {
+  font-size: 1.2rem;
+  font-weight: bold; 
+  margin-bottom: 1rem;
+  color: white;
+  padding: 10px;
+  margin-right: 70px; 
+  margin-top: 50px;/* Ajuste esta altura de acordo com suas necessidades */
+}
+
+
+.parte31{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  background: url("../../utils/assets/nuvem.png") repeat;
+  background-color:#4EACFF;
+  padding: 60px;
+}
+.confiraLinkProfissionais{
+  color: white;
+  font-family: 'Fredoka-sb', sans-serif;
+  text-decoration: underline; 
+  cursor: pointer;
+  font-size: 2.5rem; 
+  margin-top: 3rem; 
+  margin-left: 10px;
+}
+
+.parte31Image{
+  width: 80%; 
+  max-width: 600px; 
+  margin-top: 50px;
+}
+
+.parte31Text{
+  font-size: 3rem; 
+  font-family: 'Fredoka-b', sans-serif;
+  font-weight: bold; 
+  margin-bottom: 1rem;
+  color: white;
+  padding: 10px;
+  margin-right: 70px; 
+}
+.parte31Text1 {
+  font-size: 1.5rem;
+  font-family: 'Fredoka-b', sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: white;
+  padding: 10px;
+  margin-right: 70px;
+}

@@ -43,11 +43,13 @@
 /* Outro */
 
 .footer{
+    background-color:#0F4C81;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: large;
     gap: 2.5vw;
+    color: white;
 }
 
 .linksLogos{
