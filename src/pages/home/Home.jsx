@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
       <div className={styles.background}>
         <img
           src={imgPrincipal}

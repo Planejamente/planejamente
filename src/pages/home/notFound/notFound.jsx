@@ -4,7 +4,7 @@ import NavBar from '../../../components/NavBar/navbar';
 import imgNotFound from '../../../utils/assets/boneco.svg';
 import Logo from "../../../utils/assets/logo2.jpg";
 
-const NotFound = () => {gis
+const NotFound = () => {
     return (
         <>
         <NavBar />
