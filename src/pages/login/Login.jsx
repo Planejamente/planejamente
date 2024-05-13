@@ -7,6 +7,10 @@ import {
     useGoogleLogin,
 } from "@react-oauth/google";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -14,15 +18,12 @@ const Login = () => {
     const [email, setEmail] = React.useState('');
     const [sub, setSub] = React.useState('');
 
-    //Paciente
     const handleGoogleSuccess = async (credentialResponse) => {
-        // console.log("Login bem-sucedido:", credentialResponse); 
         await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ` + credentialResponse.access_token,
             },
-            // body: JSON.stringify({authUser})
         })
             .then(response => response.json())
             .then(async data => {
@@ -46,26 +47,18 @@ const Login = () => {
                         console.log(data);
                       })     
                     } 
-                    // else {
-                    //     Touch.console.error('Erro ao logar');
-                    // }
-                
                 })
-                
             })
-            // const authUser = {
-            //     email: email,
-            //     googlesub: sub
-            // };
-            // console.log(authUser);
-            // navigate('/BemVindoPaciente');
     };
 
+    const handleGoogleSuccessPac = () => {
+        
+    }
 
 
     const googleLogin = useGoogleLogin({
         onSuccess: handleGoogleSuccess,
-        // onError: handleGoogleSuccessPac,  
+        onError: handleGoogleSuccessPac,
         // ux_mode: 'popup'
     });
 
