@@ -9,6 +9,7 @@ import bolas from "../../utils/assets/Group_201.svg";
 import agenda from "../../utils/assets/Group_27_1.svg";
 import calendar from "../../utils/assets/calender.webp";
 import calendario from "../../utils/assets/calendario.png";
+import ods from "../../utils/assets/simbolo-ods.png";
 import Footer from "../../components/Footer/footer";
 
 
@@ -33,10 +34,10 @@ const Home = () => {
       behavior: "smooth",
       top: section.offsetTop
     });
-  };  
+  };
 
   return (
-    <div>
+    <div className={styles.body}>
       <div className={styles.background}>
         <img
           src={imgPrincipal}
@@ -49,29 +50,29 @@ const Home = () => {
             Onde há saúde Mental, <span>Há paz</span>
           </h1>
           <section id="sectionHome">
-          <p className={styles.paragraph}>
-            Prepare-se hoje para o amanhã e descubra a tranquilidade de cuidar
-            da sua mente conosco.
-          </p>
+            <p className={styles.paragraph}>
+              Prepare-se hoje para o amanhã e descubra a tranquilidade de cuidar
+              da sua mente conosco.
+            </p>
           </section>
           <p onClick={handleConversarClick} className={styles.conversarLink}>
             Conversar
           </p>
         </div>
-        
+
       </div>
 
       <div className={styles.extraContent}>
-      
+
         <div className={styles.extraContentInner}>
-        <section id="sectionParaVoce">
-          <p className={styles.extraText}>
-            Ajudando pessoas a
-            <span>
-              <br />
-            </span>{" "}
-            ajudar pessoas.
-          </p>
+          <section id="sectionParaVoce">
+            <p className={styles.extraText}>
+              Ajudando pessoas a
+              <span>
+                <br />
+              </span>{" "}
+              ajudar pessoas.
+            </p>
           </section>
           <p className={styles.extraText1}>
             Queremos diminuir a distância entre profissionais e pacientes,
@@ -79,7 +80,7 @@ const Home = () => {
             saúde mental a pessoas que buscam suporte emocional de uma forma
             acessível e confortável.
           </p>
-          
+
           <p onClick={handleConfira} className={styles.confiraLink}>
             Confira
           </p>
@@ -118,13 +119,13 @@ const Home = () => {
 
       <div className={styles.parte31}>
         <div className={styles.parte31Inner}>
-        <section id="sectionEspcialista">
-          <p className={styles.parte31Text}>Mais Soluções Planejamente</p>
-          
-          <p className={styles.parte31Text}>Dashboard</p>
+          <section id="sectionEspcialista">
+            <p className={styles.parte31Text}>Mais Soluções Planejamente</p>
+
+            <p className={styles.parte31Text}>Dashboard</p>
           </section>
           <p className={styles.parte31Text1}>
-          Visualize o Sucesso do Seu Atendimento em Tempo Real! Entenda, em um
+            Visualize o Sucesso do Seu Atendimento em Tempo Real! Entenda, em um
             piscar de olhos, a qualidade do seu atendimento e seu desempenho com
             dashboards inteligentes.
           </p>
@@ -147,9 +148,9 @@ const Home = () => {
         <div className={styles.parte31Inner}>
           <p className={styles.parte31Text}>Agenda</p>
           <p className={styles.parte31Text1}>
-         Chega de cadernos rabiscados, queremos facilitar para você, com a
-              integração ao Google Calendar, você terá uma visão organizada com
-              direito a lembretes
+            Chega de cadernos rabiscados, queremos facilitar para você, com a
+            integração ao Google Calendar, você terá uma visão organizada com
+            direito a lembretes
           </p>
 
           <p
@@ -165,7 +166,23 @@ const Home = () => {
           className={styles.parte31Image}
         />
       </div>
-      <Footer  />
+
+      <div className={styles.ods}>
+        <div className={styles["text-ods"]}>
+          Para nós, cada interação
+          é um passo em direção à saúde  mental, alinhada com a ODS 3.
+          Conectamos corações e mentes,
+          promovendo o  bem-estar e a cura.
+          Nosso propósito é claro:
+          ajudar pessoas a ajudar  pessoas,
+          Uma conversa por vez.
+        </div>
+        <div className={styles["img-ods"]}>
+          <img src={ods} alt="Imagem da ods" className={styles.odsImage} />
+          <a href="https://brasil.un.org/pt-br/sdgs/3">Saiba mais</a>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -1,11 +1,14 @@
-/* Estilos para o corpo e o HTML */
+/* Estilos para o corpo e o HTML
 body, html {
   margin: 0;
   padding: 0;  
   font-family: 'Fredoka-r', sans-serif;
+} */
+/* Estilos para o contêiner de fundo */
+.body{
+  font-family: 'Fredoka-l';
 }
 
-/* Estilos para o contêiner de fundo */
 .background {
   height: 100vh; 
   width: 100%; 
@@ -279,4 +282,59 @@ body, html {
   color: white;
   padding: 10px;
   margin-right: 70px;
+}
+
+
+.ods{
+  height: 100vh;
+  background-image: url(../../utils/assets/fundo-ods.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-ods{
+  font-size: 2.5rem;
+  font-family: 'Fredoka-r', sans-serif;
+  color: white;
+  padding: 90px;
+}
+
+.img-ods{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFFFFF;
+  padding: 80px;
+}
+
+.img-ods > a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: larger;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+}
+
+.img-ods > a:hover {
+  transform: scale(1.1);
+}
+
+/* .parte5{
+  display: flex;
+  flex-direction: column;
+} */
+
+.txtSaibaMais{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.parte5Image{
+  width: 200%; 
+  max-width: 600px; 
+  margin-top: 50px;
 }
