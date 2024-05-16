@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "./Login.module.css";
-import Logo from "../../utils/assets/logo-small.svg";
-import GoogleButton from "../../utils/assets/google-button.png";
+import logo from "../../utils/assets/logo-light.svg";
+import googleButton from "../../utils/assets/google-button.svg";
 import {
-    // GoogleLogin,
     useGoogleLogin,
 } from "@react-oauth/google";
 import { useNavigate } from 'react-router-dom';
@@ -34,13 +33,17 @@ const Login = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({email: data.email, googlesub: data.sub})
+                    body: JSON.stringify({
+                        email: data.email,
+                        googleSub: data.sub
+                    })
                 })
                 .then(async response => {
+                    console.log(data.email);
+                    console.log(data.sub);
                     if(response.status === 200){
-                      await fetch('https://api-61hu.onrender.com/auth/user-type', {
+                      await fetch(`https://api-61hu.onrender.com/auth/user-type/${email}`, {
                         method: 'GET',
-                        parms: {email: data.email}
                       })
                       .then(response = response.json())
                       .then(data => {
@@ -51,30 +54,32 @@ const Login = () => {
             })
     };
 
-    const handleGoogleSuccessPac = () => {
-        
+    const handleGoogleFail = () => {
+        toast.error('Falha ao logar com o Google');
     }
+
 
 
     const googleLogin = useGoogleLogin({
         onSuccess: handleGoogleSuccess,
-        onError: handleGoogleSuccessPac,
-        // ux_mode: 'popup'
+        onError: handleGoogleFail,
+        ux_mode: 'popup'
     });
 
+    const signUp = () => {
+        navigate('/cadastro');
+    }
+
     return (
-        <div className={styles['body']}>
-            <div className={styles["logo"]}>
-                <img src={Logo} alt="Logo" />
-            </div>
-            <div className={styles["welc"]}>Bem vindo de volta!</div>
-            <div className={styles["container"]}>
-                <div className={styles["content"]}>
-                    <img className={styles["bntGoogle"]} src={GoogleButton} alt="Botão para logar no google" onClick={googleLogin} />
-                </div>
-                <div className={styles["cadastro"]}>Não possui uma conta? <a className={styles["bntCadastro"]} href="/cadastro">Cadastrar-se</a></div>
-            </div>
-        </div>
+
+    <main className={styles.mainLogin}>
+        <form className={styles.formLogin}>
+            <img src={logo} alt="Logo" className={styles.logoLogin} />
+            <h1 className={styles.titleLogin}>Bem vindo de volta</h1>
+            <img src={googleButton} alt="Botão Google" className={styles.googleButtonLogin} onClick={googleLogin} />
+            <span className={styles.signUpLogin}>Não possui uma conta? <span onClick={signUp} className={styles.redirectLogin}>Cadastre-se</span></span>
+        </form>
+    </main>
     );
 };
 
