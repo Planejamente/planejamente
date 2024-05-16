@@ -45,7 +45,8 @@ const Login = () => {
                       await fetch(`https://api-61hu.onrender.com/auth/user-type/${email}`, {
                         method: 'GET',
                       })
-                      .then(response = response.json())
+                      .then(response = response.json(),
+                        console.log(response))
                       .then(data => {
                         console.log(data);
                       })     
