@@ -6,6 +6,15 @@
     color: #fff;
     padding: 2px;
     margin: 8px 0;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s;
+
+}
+
+.sideItem:hover {
+    border: 2px solid #0F4C81;
+    transition: 0.2s;
 }
 
 .sideItem img {
@@ -21,5 +30,9 @@
 
 .sideActive {
     background-color: #0F4C81;
+    border: #fff 2px solid;
+}
 
+.sideActive:hover {
+    border: #fff 2px solid;
 }

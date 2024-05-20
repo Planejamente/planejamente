@@ -4,18 +4,18 @@ import styles from "./SideBarItem.module.css";
 import userLogo from "../../utils/assets/user_logo.svg";
 import gearLogo from "../../utils/assets/gear_logo.svg";
 import logoutLogo from "../../utils/assets/logout.svg";
-const SideBarItem = ({text, active}) => {
+const SideBarItem = ({text, active, click}) => {
     switch (text) {
         case "perfil":
             return (
-                <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`}>
+                <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`} onClick={click}>
                     <img src={userLogo} alt="" />
                     <p>Meu Perfil</p>
                 </div>
             );
             case "agenda":
                 return (
-                    <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`}>
+                    <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`} onClick={click}>
                         <img src={userLogo}
                         alt="" />
                         <p>Agenda</p>
@@ -23,7 +23,7 @@ const SideBarItem = ({text, active}) => {
                 );
                 case "configuracoes":
                     return (
-                        <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`}>
+                        <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`} onClick={click}>
                             <img src={gearLogo} alt="" />
                             <p>Configurações</p>
                         </div>
