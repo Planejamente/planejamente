@@ -222,7 +222,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     onGoStep();
     return;
   }
-    if(step === 3) {      
+    if(step === 3) {
+        
       await fetch("https://api-61hu.onrender.com/psicologos/register", {
         method: 'POST',
         headers: {
