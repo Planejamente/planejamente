@@ -387,7 +387,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       switch (step) {
         case 1:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -407,7 +407,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           );
         case 2:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -462,7 +462,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       switch (step) {
         case 1:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -482,7 +482,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           );
         case 2:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -542,7 +542,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           );
         case 3:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
             <div className={styles.backBtn}>
               <button>
                 {/*onClick={backPage}*/}

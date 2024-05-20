@@ -1,4 +1,4 @@
-main {
+.mainFieldSection {
     width: 30vw;
     height: 66vh;
     border: 2px solid #fff;
@@ -65,4 +65,8 @@ background-color:transparent;
     font-size: 18px;
     border: none;
     cursor: pointer;
+}
+
+.Toastify {
+    font-family: 'Fredoka-r', sans-serif;
 }
