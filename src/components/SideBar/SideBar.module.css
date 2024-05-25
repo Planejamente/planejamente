@@ -1,0 +1,25 @@
+.sidebarPsi {
+    width: 16%;
+    background-color: #4EACFF;
+    height: 100vh;
+    border-radius: 0 32px 32px 0;
+    border: 2px solid #fff;
+    border-left: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgb(255,255,255) 10px 0px 8px -10px;
+    justify-content: space-between;
+}
+
+.logoPsiPanel {
+    margin: 2% 0 0 0;
+    width: 80%;
+}
+
+.sideItems {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
