@@ -1,8 +1,8 @@
 .sidebarPsi {
-    width: 16vw;
+    width: 16%;
     background-color: #4EACFF;
     height: 100vh;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 32px 32px 0;
     border: 2px solid #fff;
     border-left: none;
     display: flex;
@@ -13,7 +13,7 @@
 }
 
 .logoPsiPanel {
-    margin: 1vh;
+    margin: 2% 0 0 0;
     width: 80%;
 }
 

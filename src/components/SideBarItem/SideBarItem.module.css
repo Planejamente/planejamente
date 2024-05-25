@@ -5,7 +5,7 @@
     border-radius: 50vh;
     color: #fff;
     padding: 2px;
-    margin: 8px 0;
+    margin: 2% 0;
     cursor: pointer;
     border: 2px solid transparent;
     transition: 0.2s;
@@ -30,7 +30,6 @@
 
 .sideActive {
     background-color: #0F4C81;
-    border: #fff 2px solid;
 }
 
 .sideActive:hover {
