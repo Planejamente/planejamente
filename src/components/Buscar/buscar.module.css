@@ -1,16 +1,12 @@
 .bntBuscar {
-    /* background-color: #EDEDED;
-    padding: 0.5rem 1rem;
-    border-radius: 60%;
-    border: 1px;
-    cursor: pointer; */
     padding: 10px 20px 10px 20px;
     background-color: #EDEDED;
     color: #0F4C81;
     border: none;
     border-radius: 40px;
     cursor: pointer;
-    font-family: 'Fredoka';
+    font-family: 'Fredoka-r';
+    
     font-weight: 300;
     font-size: medium;
     display: flex;
