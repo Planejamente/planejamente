@@ -50,10 +50,12 @@
     font-size: large;
     gap: 2.5vw;
     color: white;
+    font-family: 'Fredoka-r', sans-serif;
+    margin: 20px;
 }
 
 .linksLogos{
-    display: flex;
+   display: flex;
    height: 4vh;
    gap: 2vw;
 }
