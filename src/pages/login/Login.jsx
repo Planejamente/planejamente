@@ -8,6 +8,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import api from "../../api";
+import Cookies from "js-cookie";
 
 
 
@@ -28,28 +30,29 @@ const Login = () => {
             .then(async data => {
                 setEmail(data.email);
                 setSub(data.sub);
-                await fetch('https://api-61hu.onrender.com/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
+                api.post("auth/login",
+                    {
                         email: data.email,
                         googleSub: data.sub
                     })
-                })
                 .then(async response => {
-                    console.log(data.email);
-                    console.log(data.sub);
-                    if(response.status === 200){
-                      await fetch(`https://api-61hu.onrender.com/auth/user-type/${email}`, {
-                        method: 'GET',
-                      })
-                      .then(response = response.json())
-                      .then(data => {
-                        console.log(data);
-                      })     
-                    } 
+                    const token = response.data.token
+                    const tokenSplitted = token.split('.');
+                    const tokenPayload = JSON.parse(atob(tokenSplitted[1]));
+                    console.log(tokenPayload)
+                    if(tokenPayload.tipoUsuario === "psicologo"){
+                        // cookie token
+                        Cookies.set('token', token);
+                        console.log(Cookies.get('token'))
+                        navigate("/psipanel")
+                    } else if(tokenPayload.tipoUsuario === "paciente"){
+                        // cookie token
+                        Cookies.set('token', token);
+                        console.log(Cookies.get('token'))
+                        navigate("/pacpanel")
+                    }
+
+
                 })
             })
     };
