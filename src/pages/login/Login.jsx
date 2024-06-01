@@ -36,6 +36,7 @@ const Login = () => {
                         googleSub: data.sub
                     })
                 .then(async response => {
+
                     const token = response.data.token
                     const tokenSplitted = token.split('.');
                     const tokenPayload = JSON.parse(atob(tokenSplitted[1]));

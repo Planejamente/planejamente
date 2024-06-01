@@ -5,15 +5,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: fit-content;
     color: #ffffff;
-    font-family: "Fredoka", sans-serif;
+    font-family: "Fredoka-r", sans-serif;
 }
 
 .title{
     display: flex;
     justify-content: center;
     font-weight: 300;
+    margin-top: 20vh;
 }
 
 .TimePicker{
@@ -39,4 +40,9 @@
     align-items: center;
     gap: 2vh;
     margin: 0 0 5vh 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Define duas colunas de largura igual */
 }
