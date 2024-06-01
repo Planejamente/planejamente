@@ -21,7 +21,6 @@ const SideBar = ({ mode, actualPage, setActualPage}) => {
                         <SideBarItem text="perfil" active={activeItem === "perfil" ? "a" : null} click={() => handleClick("perfil")}/>
                         <SideBarItem text="agenda" active={activeItem === "agenda" ? "a" : null} click={() => handleClick("agenda")}/>
                         <SideBarItem text="configuracoes" active={activeItem === "configuracoes" ? "a" : null} click={() => handleClick("configuracoes")}/>
-                        <SideBarItem text="configuracoes" active={activeItem === "configuracoes" ? "a" : null} click={() => handleClick("configuracoes")}/>
                     </div>
                     <SideBarItem text="sair" />
                 </nav>
