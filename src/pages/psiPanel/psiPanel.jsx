@@ -6,7 +6,6 @@ import {Link} from "react-router-dom";
 
 const PsiPanel = () => {
     const [actualPage, setActualPage] = React.useState("perfil");
-    -
     return (
         <main className={styles.mainPsiPanel}>
           <SideBar mode="psi" />
