@@ -3,6 +3,7 @@ import styles from "./cardPsico.module.css";
 // import profilePic from "../../utils/assets/lauraSantos.png"
 import star from "../../utils/assets/Star 13.png"
 import check from "../../utils/assets/check-icon.png"
+import { useNavigate } from "react-router-dom";
 
 // const CardPsico = () => {
 //     return (
@@ -38,21 +39,33 @@ import check from "../../utils/assets/check-icon.png"
 
 
 //Teste do uso de axios para buscar dados da API(MockApi)
-const CardPsico = ({nome, headline, crp, espec, descricao, avaliacao, qntAtendimentos, imagemUrl, id}) => {
+const CardPsico = ({nome, headline, crp, espec, descricao, avaliacao, qntAtendimentos, imagemUrl, id, horarios}) => {
+    const navigate = useNavigate();
     const maxLenght = 130;
+
     if (descricao.length > maxLenght) {
         descricao = descricao.substring(0, maxLenght) + '...';
     }
 
+    const handleClick = () =>{
+        const horariosPsicologo = {
+            id: id,
+            horarios: horarios
+        };
+        console.log(horariosPsicologo);
+
+        // navigate('/PerfilPsic', {state: horariosPsicologo});
+        navigate(`/PerfilPsic/${id}`);
+    }
+
     return (
-        <div className={styles['card']}>
+        <div className={styles['card']} onClick={handleClick}>
             <div className={styles['header']}>
                 <div className={styles['img-container']}>
                     <img src={imagemUrl} alt="Avatar" className={styles['img']}/>
                 </div>
                 <div className={styles["header-info"]}>
                     <h4><b>{nome} 
-                    {/* {id} */}
                     </b></h4>
                     <p>{headline}</p>
                     <p>CRP: {crp}</p>

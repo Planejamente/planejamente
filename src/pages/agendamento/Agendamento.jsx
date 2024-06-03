@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Calendario from "../../components/Calendario/calendario";
 import TimePicker from "../../components/TimePicker/timepicker";
 import Buscar from "../../components/Buscar/buscar";
@@ -9,27 +9,37 @@ import NavBar from "../../components/NavBar/navbar";
 import api from "../../api";
 
 const Agendamento = () => {
-    // Estados para armazenar a data e os horários
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
-    const [cardsData, setCardsData] = useState();
+    const [cardsData, setCardsData] = useState([]);
 
-    function getPsic(){
+    const getPsic = () => {
+        const horarios = {
+            date: selectedDate.toISOString().split('T')[0],
+            startTime: startTime + ':00',
+            endTime: endTime + ':00'
+        };
+
+        // Printar os horários selecionados no console
+        console.log("Horário Selecionados:", horarios);
+
         api.get().then((response) => {
-            if(response.data.length === 0){
+            if (response.data.length === 0) {
                 alert("Nenhum psicólogo encontrado");
+            } else {
+                const psicologosComHorarios = response.data.map(psicologo => ({
+                    ...psicologo,
+                    horarios: horarios
+                }));
+                setCardsData(psicologosComHorarios);
             }
-            console.log(response.data);
-            setCardsData(response.data);
         });
-    }
-    
-    useEffect(() => {getPsic()}, []);
+    };
 
     return (
         <div className={styles['body']}>
-            <NavBar/>
+            <NavBar />
             <h1 className={styles['title']}>Escolha o melhor dia e horário para você</h1>
             <div className={styles['inputs']}>
                 <Calendario selectedDate={selectedDate} onDateChange={setSelectedDate} />
@@ -44,24 +54,24 @@ const Agendamento = () => {
             <div className={styles['bntBusca']}>
                 <Buscar onClick={getPsic}/>
             </div>
-                {/* Quando estiver recebendo os cards dinamicamente tem que colocar uma validadção de que se tiver somente um valor é para alinhar com o display flex e não com grid */}
-                <div className={styles['cards']}>
-                    {cardsData && cardsData.map((data, index)=> (
-                        <div key={index}>
-                        <CardPsico
-                            // id={data.id}
-                            nome={data.nome}
-                            headline={data.headline}
-                            crp={data.crp}
-                            espec={data.espec}
-                            descricao={data.descricao}
-                            avaliacao={data.avaliacao}
-                            qntAtendimentos={data.qntAtendimentos}
-                            imagemUrl={data.imagemUrl} 
-                        />
-                        </div>
-                    ))}
-                </div>
+            <div className={styles['cards']}>
+                {cardsData && cardsData.map((data, index) => (
+                    <CardPsico
+                        key={index}
+                        id={data.id}
+                        nome={data.nome}
+                        headline={data.headline}
+                        crp={data.crp}
+                        espec={data.espec}
+                        descricao={data.descricao}
+                        avaliacao={data.avaliacao}
+                        qntAtendimentos={data.qntAtendimentos}
+                        imagemUrl={data.imagemUrl}
+                        horarios={data.horarios}
+                        // horariosPsicologo={data.horarios}
+                    />
+                ))}
+            </div>
             <Footer />
         </div>
     );

@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import Agendamento from "./pages/agendamento/Agendamento";
 import Cadastro from "./pages/cadastro/Cadastro";
 import WelcomePac from "./pages/welcomePac/WelcomePac";
+import PerfilPsic from "./pages/PerfilPsic/perfilPsic";
 
 function Router() {
     return (
@@ -18,6 +19,8 @@ function Router() {
                     <Route path="/agendamento" element={<Agendamento />} />
                     <Route path="/cadastro" element={<Cadastro />} />
                     <Route path="/BemVindoPaciente" element={<WelcomePac />} />
+                    <Route path="/PerfilPsic/:id" element={<PerfilPsic />} />
+                    {/* <Route path="/PerfilPsic" element={<PerfilPsic/>} /> */}
                 </Routes>
             </BrowserRouter>
         </>
