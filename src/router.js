@@ -6,11 +6,8 @@ import Login from "./pages/login/Login";
 import Agendamento from "./pages/agendamento/Agendamento";
 import Cadastro from "./pages/cadastro/Cadastro";
 import WelcomePac from "./pages/welcomePac/WelcomePac";
-<<<<<<< vitor-0002
 import PerfilPsic from "./pages/PerfilPsic/perfilPsic";
-=======
 import PsiPanel from "./pages/psiPanel/psiPanel";
->>>>>>> main
 
 function Router() {
     return (
@@ -23,12 +20,8 @@ function Router() {
                     <Route path="/agendamento" element={<Agendamento />} />
                     <Route path="/cadastro" element={<Cadastro />} />
                     <Route path="/BemVindoPaciente" element={<WelcomePac />} />
-<<<<<<< vitor-0002
                     <Route path="/PerfilPsic/:id" element={<PerfilPsic />} />
-                    {/* <Route path="/PerfilPsic" element={<PerfilPsic/>} /> */}
-=======
                     <Route path="/psipanel" element={<PsiPanel />} />
->>>>>>> main
                 </Routes>
             </BrowserRouter>
         </>
