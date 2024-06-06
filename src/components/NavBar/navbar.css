@@ -5,7 +5,7 @@
   padding: 0 5vw; 
   background-color: #4EACFF;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-  height: 10vh; 
+  height: 8vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,7 +29,9 @@
 .navbar-links {
   display: flex;
   align-items: flex-end;
-  font: 1.2rem 'Roboto', sans-serif;
+  font: 1.3rem 'Roboto', sans-serif;
+  font-family: 'Fredoka-r';
+
   margin-left: 30%; 
   color: white;
   cursor: pointer;

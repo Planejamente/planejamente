@@ -73,9 +73,6 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   };
 
   async function handleGoogleSuccessPsi(credentialResponse) {
-    console.log("Login bem-sucedido:", credentialResponse);
-    console.log(hasGrantedAllScopesGoogle(credentialResponse,
-        "https://www.googleapis.com/auth/calendar"));
         await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
           method: 'GET',
           headers: {
@@ -85,28 +82,27 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       .then(async data => {
         setEmail(data.email);
         setSub(data.sub);
-      
-  
-      await fetch("https://api-61hu.onrender.com/auth/login",
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+        console.log(`agr p api`)
+
+        api.post("/auth/login", {
           email: data.email,
           googleSub: data.sub
         })
-      })
       .then(response => {
         if(response.status === 200){
           toast.error("Usuário já cadastrado")
-        } else {
-          onGoStep();
         }
       })
+            .catch(error => {
+              console.log(error)
+              console.log(error.response.status)
+              if(error.response.status === 401){
+                console.log("foi")
+               onGoStep();
+              }
+            })
     })
-  };
+  }
 
 
   const handleGoogleFailedPsi = () => {
@@ -128,38 +124,37 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   async function handleGoogleSuccessPac(credentialResponse) {
 
     await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ` + credentialResponse.access_token
-    }})
-    .then(async response => response.json())
-    .then(async data => {
-      setEmail(data.email);
-      setSub(data.sub);
-
-
-    await fetch("https://api-61hu.onrender.com/auth/login",
-  
-    {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: data.email,
-        googleSub: data.sub
-      })
-    })
-    .then(response => {
-      if(response.status === 200){
-        toast.error("Usuário já cadastrado")
-      } else {
-        onGoStep();
+        Authorization: `Bearer ` + credentialResponse.access_token
       }
     })
-  })
-  }
+        .then(async response => response.json())
+        .then(async data => {
+              setEmail(data.email);
+              setSub(data.sub);
+              console.log(`agr p api`)
 
+              api.post("/auth/login", {
+                email: data.email,
+                googleSub: data.sub
+              })
+                  .then(response => {
+                    if (response.status === 200) {
+                      toast.error("Usuário já cadastrado")
+                    }
+                  })
+                  .catch(error => {
+                    console.log(error)
+                    console.log(error.response.status)
+                    if (error.response.status === 401) {
+                      console.log("foi")
+                      onGoStep();
+                    }
+                  })
+            }
+        )
+  }
 
 
   const googleLoginPac = useGoogleLogin({
@@ -186,31 +181,39 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(cpf, "CPF") || !verifyCPF(cpf)) {
         return;
       }
-      await fetch("https://api-61hu.onrender.com/pacientes/register", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nome: name,
-          dataDeNascimento: birth,
-          telefone: telefone,
-          genero: sex,
-          email: email,
-          googleSub: sub,
-          endereco: null,
-          role: "USER"
+      api.post("/pacientes/register",
+          {
+        nome: name,
+        dataDeNascimento: birth,
+        telefone: telefone,
+        genero: sex,
+        email: email,
+        googleSub: sub,
+        endereco: null,
+        role: "USER"
         })
-      })
-      .then(response => {
-        if(response.status === 201) {
-          toast.success("Cadastro Realizado com Sucesso!");
-          setTimeout(navigate("/agendamento"), 2000)
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      })
+        .then(response => {
+            if(response.status === 201) {
+                toast.success("Cadastro Realizado com Sucesso!");
+              api.post("/auth/login",
+                  {
+                    email: email,
+                    googleSub: sub
+                  })
+                  .then(response => {
+                    if(response.status === 200){
+                      const token = response.data.token
+                      Cookies.set('token', token);
+                      navigate("/psipanel")
+                    }
+                  })
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+
 
   }
 
@@ -222,63 +225,48 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     onGoStep();
     return;
   }
-    if(step === 3) {      
-      await fetch("https://api-61hu.onrender.com/psicologos/register", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nome: name,
-          dataDeNascimento: birth,
-          telefone: telefone.replace(/\D/g, ""),
-          genero: sex,
-          email: email,
-          googleSub: sub,
-          endereco: null,
-          role: "ADMIN",
-          crp: CRP,
-          cnpj: CNPJ,
-          cpf: cpf,
-          linkFotoPerfil: null,
-          idCalendarioDisponivel: "id_calendario_disp_exemplo",
-          idCalendarioConsulta: "id_calendario_cons_exemplo",
-          linkAnamnese: "url_exemplo_anamnese",
-          idAnamnese: "id_anamnese_exemplo",
-          linkFotoDeFundo: null
-        })
+    if(step === 3) {
+      api.post("/psicologos/register", {
+        nome: name,
+        dataDeNascimento: birth,
+        telefone: telefone.replace(/\D/g, ""),
+        genero: sex,
+        email: email,
+        googleSub: sub,
+        endereco: null,
+        role: "ADMIN",
+        crp: CRP,
+        cnpj: CNPJ,
+        cpf: cpf,
+        linkFotoPerfil: null,
+        idCalendarioDisponivel: "id_calendario_disp_exemplo",
+        idCalendarioConsulta: "id_calendario_cons_exemplo",
+        linkAnamnese: "url_exemplo_anamnese",
+        idAnamnese: "id_anamnese_exemplo",
+        linkFotoDeFundo: null
       })
-      .then(async response => {
-        console.log(response);
-        if(response.status === 201) {
-          toast("Cadastro Realizado com Sucesso!");
-          // redirecionar para pagina inicial de psicologo(Bem vindo tananana)
-          await fetch("https://api-61hu.onrender.com/auth/login",
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-            email: email,
-            googleSub: sub
-            })
-          })
-          .then(response => {
-            if(response.status === 200){
-              Cookies.set("JWT", response.token)
+        .then(response => {
+            if(response.status === 201) {
+                toast.success("Cadastro Realizado com Sucesso!");
+                api.post("/auth/login",
+                {
+                    email: email,
+                    googleSub: sub
+                })
+                .then(response => {
+                    if(response.status === 200){
+                        const token = response.data.token
+                      Cookies.set('token', token);
+                        navigate("/psipanel")
+                    }
+                })
+
             }
-          }
-        )
-          setTimeout(navigate("/psicologoBemVindo"), 2000)
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      })
+        })
     }
-    toast.success("Cadastro Realizado com Sucesso!");
   }
+
+
 
   // (11) 99999-9999
   const handlePhoneChange = (event) => {
@@ -376,18 +364,13 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     navigate("/login");
   };
 
-  const googleTest = useGoogleLogin({
-    onSuccess: codeResponse => console.log(codeResponse)
-  });
-  
-
   
   switch (mode) {
     case "pac":
       switch (step) {
         case 1:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -407,7 +390,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           );
         case 2:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -462,7 +445,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       switch (step) {
         case 1:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -482,7 +465,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           );
         case 2:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
               <div className={styles.backBtn}>
                 <button>
                   {/*onClick={backPage}*/}
@@ -542,7 +525,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           );
         case 3:
           return (
-            <main style={modeStyle[mode]}>
+            <main className={styles.mainFieldSection} style={modeStyle[mode]}>
             <div className={styles.backBtn}>
               <button>
                 {/*onClick={backPage}*/}
