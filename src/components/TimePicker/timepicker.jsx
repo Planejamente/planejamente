@@ -1,15 +1,7 @@
 import React from "react";
 import "./timepicker.css";
 
-const TimePicker = ({ startTime, endTime, onStartTimeChange, onEndTimeChange, selectedDate }) => {
-
-    const horarios = JSON.stringify({
-        date: selectedDate.toISOString().split('T')[0],
-        startTime: startTime + ':00',
-        endTime: endTime + ':00'
-    });
-
-    console.log(horarios);
+const TimePicker = ({ startTime, endTime, onStartTimeChange, onEndTimeChange}) => {
 
     return (
         <div className="content">
