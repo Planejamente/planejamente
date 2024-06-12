@@ -5,11 +5,11 @@ import logo from "../../utils/assets/logo-dark.svg";
 import SideBarItem from "../SideBarItem/SideBarItem";
 
 const SideBar = ({ mode, actualPage, setActualPage}) => {
-    const [activeItem, setActiveItem] = useState("perfil");
+    const [activeItem, setActiveItem] = useState(actualPage);
 
     const handleClick = (itemText) => {
         setActiveItem(itemText);
-        console.log(itemText);
+        setActualPage(itemText);
     };
 
     switch (mode) {
