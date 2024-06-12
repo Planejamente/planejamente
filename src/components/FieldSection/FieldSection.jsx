@@ -406,28 +406,28 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
               </div>
               <div className={styles.inputs}>
                 <InputMod
-                  margin={"16px"}
+                  margin={"3%"}
                   type="text"
                   label="Nome"
                   name="Nome"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <InputMod
-                  margin={"16px"}
+                  margin={"3%"}
                   type="date"
                   label="Data de Nascimento"
                   name="Data de Nascimento"
                   onChange={(e) => setBirth(e.target.value)}
                 />
                 <InputMod
-                  margin={"16px"}
+                  margin={"3%"}
                   type="select"
                   label="Sexo"
                   name="Sexo"
                   onChange={(e) => setSex(e.target.value)}
                 />
                 <InputMod
-                  margin={"16px"}
+                  margin={"3%"}
                   type="text"
                   value={cpf}
                   label="CPF"
@@ -481,17 +481,17 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
               </div>
               <div className={styles.inputs}>
                 <InputMod
-                  margin={"16px"}
+                    margin={"3%"}
                   type="text"
                   req={"t"}
-
                   label="Nome"
                   value={name}
                   name="Nome"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <InputMod
-                  margin={"16px"}
+                    margin={"3%"}
+
                   type="date"
                   req={"t"}
 
@@ -501,8 +501,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   onChange={(e) => setBirth(e.target.value)}
                 />
                 <InputMod
-                  margin={"16px"}
-                  type="select"
+                    margin={"3%"}
+                    type="select"
                   label="Sexo"
                   req={"t"}
 
@@ -510,8 +510,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                   onChange={(e) => setSex(e.target.value)}
                 />
                 <InputMod
-                  margin={"16px"}
-                  type="text"
+                    margin={"3%"}
+                    type="text"
                   value={telefone}
                   label="Telefone"
                   name="Telefone"
@@ -541,7 +541,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
             </div>
             <div className={styles.inputs}>
               <InputMod
-                margin={"16px"}
+                margin={"3%"}
                 type="text"
                 value={CEP}
                 label="CEP"
@@ -550,7 +550,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 onChange={handleCepChange}
               />
               <InputMod
-                margin={"16px"}
+                margin={"3%"}
                 type="text"
                 value={cpf}
                 label="CPF"
@@ -559,7 +559,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 onChange={handleCpfChange}
               />
               <InputMod
-                margin={"16px"}
+                margin={"3%"}
                 type="text"
                 value={CNPJ}
                 label="CNPJ"
@@ -568,7 +568,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                 onChange={(e) => setCNPJ(e.target.value)}
               />
               <InputMod
-                margin={"16px"}
+                margin={"3%"}
                 type="text"
                 value={CRP}
                 label="CRP"

@@ -5,11 +5,11 @@ import logo from "../../utils/assets/logo-dark.svg";
 import SideBarItem from "../SideBarItem/SideBarItem";
 
 const SideBar = ({ mode, actualPage, setActualPage}) => {
-    const [activeItem, setActiveItem] = useState("perfil");
+    const [activeItem, setActiveItem] = useState(actualPage);
 
     const handleClick = (itemText) => {
         setActiveItem(itemText);
-        console.log(itemText);
+        setActualPage(itemText);
     };
 
     switch (mode) {
@@ -20,7 +20,6 @@ const SideBar = ({ mode, actualPage, setActualPage}) => {
                     <div className={styles.sideItems}>
                         <SideBarItem text="perfil" active={activeItem === "perfil" ? "a" : null} click={() => handleClick("perfil")}/>
                         <SideBarItem text="agenda" active={activeItem === "agenda" ? "a" : null} click={() => handleClick("agenda")}/>
-                        <SideBarItem text="configuracoes" active={activeItem === "configuracoes" ? "a" : null} click={() => handleClick("configuracoes")}/>
                         <SideBarItem text="configuracoes" active={activeItem === "configuracoes" ? "a" : null} click={() => handleClick("configuracoes")}/>
                     </div>
                     <SideBarItem text="sair" />
