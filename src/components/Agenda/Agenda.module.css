@@ -1,0 +1,119 @@
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.containerConsultas{
+  background-color: #ffffff;
+  height: 85%;
+  width: 80%;
+  padding: 16px;
+  border-radius: 3%;
+}
+
+.labelContainerConsultas{
+  width: 32%;
+  font-family: "Fredoka-m";
+  font-size: 24px;
+  font-weight: bold;
+  margin: 1vh;
+  color: #0F4C81;
+}
+
+.listConsultas{
+  display: flex;
+  height: 85%;
+  margin: 1vh;
+}
+
+.consultas{
+  display: flex;
+  overflow-x: auto;
+  width: -webkit-fill-available;
+  margin: 2%;
+  align-items: center;
+  gap: 5%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardConsultaBorder{
+  border: 2px solid #255C8C;
+  background-color: #255C8C;
+  min-height: 85%;
+  min-width: 32%;
+  border-radius: 3%;
+  border-bottom-left-radius: 8px;
+  box-shadow: 5px 5px 0px 5px #255C8C;
+  margin: 2%;
+}
+
+.cardConsulta{
+  background-color: #ffffff;
+  min-height: 43vh;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
+
+.cardConsulta .nomePaciente{
+  padding: 6%;
+}
+
+.cardConsulta .horarioAgenda{
+  padding: 6%;
+}
+
+.cardConsulta .dataAgenda{
+  padding: 6%;
+}
+
+.cardNomePaciente{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+  font-family: "Fredoka-m";
+  font-size: 22px;
+  color: #0F4C81;
+}
+
+.cardContent{
+  font-family: "Fredoka-m";
+  font-size: 16px;
+  color: #0F4C81;
+  text-align: center;
+}
+
+.labelHorario{
+  text-align: center;
+  font-family: "Fredoka-m";
+  font-size: 20px;
+  color: #0F4C81;
+  padding: 5%;
+}
+
+.horarioContent{
+  text-align: center;
+  font-family: "Fredoka-m";
+  font-size: 22px;
+  color: #0F4C81;
+}
+
+.btnAcessarAgendamento{
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.btnAcessarAgendamento button{
+  border: none;
+  background-color: #255C8C;
+  width: 100%;
+  min-height: 7vh;
+  font-family: "Fredoka-m";
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}

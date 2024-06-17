@@ -1,19 +1,157 @@
-.containerProfile {
+.main{
+    background-color: #4EACFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.formEditProfile{
+    background-color: #ffffff;
     height: 80%;
-    border: 2px solid #fff;
+    width: 50%;
+    padding: 16px;
+    border-radius: 24px;
+}
+
+.formLabel{
     width: 40%;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    margin: 1vh;
     color: #0F4C81;
-    background-color: #fff;
 }
 
 .inputProfile {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 2%;
+    grid-gap: 45px;
+    margin-top: 10px;
+    height: 80%;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
 }
 
-.btnSaveProfile {
+.btnSaveProfile{
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 12px;
+}
+
+.btnSaveProfile button{
+    background-color: #0F4C81;
+    width: 175px;
+    padding: 16px;
+    border-radius: 20px;
+    border: 0px;
+    color: white;
+    font-family: "Fredoka-m";
+    font-size: 16px;
+}
+
+.btnSaveProfile button:hover{
+    background-color: #0F4C8180;
+    cursor: pointer;
+}
+
+.containerOutrasInfos{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 45px;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 32%;
+    padding: 32px;
+}
+
+
+.containerOutrasInfos .experiencias{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 64%;
+    padding: 10px;
+    gap: 32%;
+    border-radius: 20px;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    color: #0F4C81;
+    background-color: #ffffff;
+}
+
+.containerOutrasInfos .experiencias button{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    color: #0F4C81;
+    background-color: #ffffff;
+    border: 0px;
+    cursor: pointer;
+}
+
+.containerOutrasInfos .formacoes{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 64%;
+    padding: 10px;
+    gap: 32%;
+    border-radius: 20px;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    color: #0F4C81;
+    background-color: #ffffff;
+}
+
+
+.containerOutrasInfos .formacoes button{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    color: #0F4C81;
+    background-color: #ffffff;
+    border: 0px;
+    cursor: pointer;
+}
+
+.containerOutrasInfos .especialidade{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 64%;
+    padding: 10px;
+    gap: 32%;
+    border-radius: 20px;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    color: #0F4C81;
+    background-color: #ffffff;
+}
+
+.containerOutrasInfos .especialidade button{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-family: "Fredoka-m";
+    font-size: 24px;
+    color: #0F4C81;
+    background-color: #ffffff;
+    border: 0px;
+    cursor: pointer;
 }

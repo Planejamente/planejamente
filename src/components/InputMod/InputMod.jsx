@@ -20,6 +20,7 @@ const InputMod = ({ type, label, value, name, onChange, padding, margin, req, mo
                   value={value}
                   name={name}
                   onChange={onChange}
+                  on
                   max={type === "date" ? maxDate : undefined}
                   list={name === "Sexo" ? "opcoes" : undefined}
               />
