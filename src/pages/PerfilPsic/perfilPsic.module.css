@@ -83,10 +83,11 @@
     gap: 100px;
 }
 
-.buttonSobre{
+.crpEstado{
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 5vw;
+    margin-bottom: -6vh;
 }
 
 .bntAgend {
@@ -103,7 +104,7 @@
     font-size: large;
     transition: transform 0.3s ease-in-out;
     margin: 50px;
-    margin-left: 90px;
+    margin-left: 60px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -112,7 +113,10 @@
 }
 
 .sobre {
-    margin-right: 120px;
+    position: inherit;
+    margin-left: 400px;
+    margin-top: -95px;
+    width: 55vw;
 }
 
 .espForm{

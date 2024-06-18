@@ -87,7 +87,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         setSub(data.sub);
       
   
-      await fetch("https://api-61hu.onrender.com/auth/login",
+      await fetch("http://localhost:8080/auth/login",
       {
         method: 'POST',
         headers: {
@@ -138,7 +138,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       setSub(data.sub);
 
 
-    await fetch("https://api-61hu.onrender.com/auth/login",
+    await fetch("http://localhost:8080/auth/login",
   
     {
       method: 'POST',
@@ -186,7 +186,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       if(!verifyValue(name, "Nome") || !verifyValue(birth, "Data de nascimento") || !verifyValue(sex, "Sexo") || !verifyValue(cpf, "CPF") || !verifyCPF(cpf)) {
         return;
       }
-      await fetch("https://api-61hu.onrender.com/pacientes/register", {
+      await fetch("http://localhost:8080/pacientes/register", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -223,7 +223,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     return;
   }
     if(step === 3) {      
-      await fetch("https://api-61hu.onrender.com/psicologos/register", {
+      await fetch("http://localhost:8080/psicologos/register", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -253,7 +253,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         if(response.status === 201) {
           toast("Cadastro Realizado com Sucesso!");
           // redirecionar para pagina inicial de psicologo(Bem vindo tananana)
-          await fetch("https://api-61hu.onrender.com/auth/login",
+          await fetch("http://localhost:8080/auth/login",
           {
             method: 'POST',
             headers: {

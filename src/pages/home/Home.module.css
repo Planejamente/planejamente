@@ -1,12 +1,7 @@
-/* Estilos para o corpo e o HTML
-body, html {
-  margin: 0;
-  padding: 0;  
-  font-family: 'Fredoka-r', sans-serif;
-} */
-/* Estilos para o contêiner de fundo */
 .body{
   font-family: 'Fredoka-l';
+  background-color: #0F4C81;
+  width: 100%;
 }
 
 .background {
@@ -16,8 +11,8 @@ body, html {
   justify-content: flex-end; 
   align-items: flex-start; 
   position: relative; 
-  background: url("../../utils/assets/estrela.png") repeat;
-  background-color: #0F4C81;
+  background: url("../../utils/assets/background-home.png");
+  background-size: cover;
 }
 
 
@@ -31,49 +26,50 @@ body, html {
 }
 
 /* Estilos para o conteúdo */
-.container {
+.home-content {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 6%; 
-  transform: translateY(-50%);
-  color: white; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
 }
 
 /* Estilos para o cabeçalho */
-.container h1 {
-  font-size: 4rem; 
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold; 
-  margin-bottom: 1rem;
-  margin-top: -5rem; 
+.title { 
+  font-family: 'Fredoka-l';
+  font-size: 4rem;
+  margin-top: -40vh;
 }
 
-/* Estilos para a parte em destaque do cabeçalho */
-.container h1 span {
-  display: block; 
-  font-style: italic; 
-}
-.paragraph{
-  font-size: 1.2rem;
-  font-family: 'Fredoka-m', sans-serif;
-  font-weight: bold;
+.home-text{
+  font-size: 1.4rem;
+  font-family: 'Fredoka-l', sans-serif;
   color: white;
-  padding: 10px;
-  margin-left: -10px;
-  
 }
 
 /* Estilos para o link de conversa */
 .conversarLink {
-  color: white;
-  font-family: 'Fredoka-sb', sans-serif;
-  text-decoration: underline; 
+  font-family: 'Fredoka-r', sans-serif;
+  text-decoration: none; 
   cursor: pointer;
-  font-size: 2.5rem; 
-  margin-top: 3rem; 
+  font-size: 2.5rem;  
+  transition: transform 0.5s ease-in-out;
 }
+
+.buttonConv{
+  display: flex;
+  align-items: center;
+  margin-top: 15vh;
+}
+
+.conversarLink:hover {
+  transform: scale(1.1);
+}
+
 /*  Estilos para o conteúdo extra */
-.extraContent {
+.ajudando-pessoas {
   display: flex;
   justify-content: space-between; 
   align-items: center; 
@@ -81,10 +77,6 @@ body, html {
   padding: 60px;
   background: url("../../utils/assets/nuvem.png") repeat;
   background-color: #4EACFF;
-}
- 
-.extraContentInner {
-  width: 90%; 
 }
 
 .extraImage {
@@ -95,8 +87,7 @@ body, html {
 /* Estilos para o texto extra */
 .extraText {
   font-size: 3rem; 
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold; 
+  font-family: 'Fredoka-sb', sans-serif;
   margin-bottom: 1rem;
   color: white;
   padding: 10px;
@@ -104,42 +95,40 @@ body, html {
 }
 .extraText1 {
   font-size: 1.5rem; 
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold; 
+  font-family: 'Fredoka-l', sans-serif;
   margin-bottom: 1rem;
   color: white;
   padding: 10px;
   margin-right: 70px; 
 }
 
-/* Estilos para o link "Confira" */
 .confiraLink {
-  display: inline-block;
-  font-family: 'Fredoka-sb', sans-serif;
+  font-family: 'Fredoka-l', sans-serif;
   color: #fff; 
-  padding: 10px 30px;
-  border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease-in-out;
   font-size: 2.0rem; 
-  margin-top: 20px; 
   cursor: pointer;
-  margin-left: -20px;
-  
+  position: absolute;
+  margin-bottom: -60vh;
+  margin-left: 0.5vw;
+}
+
+.confiraLink:hover {
+  transform: scale(1.1);
 }
 
 .parte3{
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  background: url("../../utils/assets/estrela.png") repeat;
-  background-color:#0F4C81;
+  background: url("../../utils/assets/ProfQualifi.png");
+  background-size: cover;
   padding: 60px;
 }
+
 .confiraLinkProfissionais{
   color: white;
-  font-family: 'Fredoka-sb', sans-serif;
-  text-decoration: underline; 
+  font-family: 'Fredoka-l', sans-serif;
+  text-decoration: none; 
   cursor: pointer;
   font-size: 2.5rem; 
   margin-top: 3rem; 
@@ -154,17 +143,15 @@ body, html {
 
 .parte3Text{
   font-size: 3rem; 
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold; 
+  font-family: 'Fredoka-sb', sans-serif; 
   margin-bottom: 1rem;
   color: white;
   padding: 10px;
-  margin-right: 70px; 
 }
+
 .parte3Text1 {
   font-size: 1.5rem;
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka-l', sans-serif;
   margin-bottom: 1rem;
   color: white;
   padding: 10px;
@@ -251,35 +238,101 @@ body, html {
 }
 .confiraLinkProfissionais{
   color: white;
-  font-family: 'Fredoka-sb', sans-serif;
-  text-decoration: underline; 
+  font-family: 'Fredoka-l', sans-serif; 
   cursor: pointer;
-  font-size: 2.5rem; 
-  margin-top: 3rem; 
-  margin-left: 10px;
 }
 
-.parte31Image{
+.agenda{
   width: 80%; 
-  max-width: 600px; 
-  margin-top: 50px;
+  width: 500px; 
+  margin-bottom: -28vh;
 }
 
 .parte31Text{
   font-size: 3rem; 
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold; 
+  font-family: 'Fredoka-sb', sans-serif;
+  color: white;
+  margin-bottom: 5vw;
+}
+
+.dashTitle{
+  font-size: 2.5rem; 
+  font-family: 'Fredoka-l', sans-serif;
   margin-bottom: 1rem;
   color: white;
-  padding: 10px;
   margin-right: 70px; 
 }
-.parte31Text1 {
+
+.textoDash {
   font-size: 1.5rem;
-  font-family: 'Fredoka-b', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka-r', sans-serif;
+  color: white;
+  width: 45vw;
+}
+
+.agendaSection{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  background: url("../../utils/assets/nuvem.png") repeat;
+  background-color:#4EACFF;
+  padding: 60px;
+}
+
+.calendario{
+  width: 80%; 
+  width: 500px; 
+  margin-left: -1.5vw;
+}
+
+.agendaTitle{
+  font-size: 3rem; 
+  font-family: 'Fredoka-l', sans-serif;
+  margin-bottom: 1rem;
+  color: white;
+
+  text-align: end;
+}
+
+.calenText{
+  font-size: 1.5rem;
+  font-family: 'Fredoka-r', sans-serif;
+  color: white;
+  width: 45vw;
+  text-align: end;
+}
+
+.ods-section{
+  display: flex;
+  align-items: center;
+  background: url("../../utils/assets/Group\ 237.png");
+  background-size: cover;
+  padding: 200px 50px;
+}
+
+.ods-text{
+  font-size: 2rem; 
+  font-family: 'Fredoka-l', sans-serif;
   margin-bottom: 1rem;
   color: white;
   padding: 10px;
-  margin-right: 70px;
+  margin-right: 100px; 
+}
+
+.ods-image{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem; 
+  color: white;
+  font-family: 'Fredoka-l', sans-serif;
+}
+
+.ods-image{
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer; 
+}
+
+.ods-image:hover{
+  transform: scale(1.1);
 }

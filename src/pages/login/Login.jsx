@@ -24,6 +24,7 @@ const Login = () => {
                 Authorization: `Bearer ` + credentialResponse.access_token,
             },
         })
+        console.log(credentialResponse.access_token)
             .then(response => response.json())
             .then(async data => {
                 setEmail(data.email);
@@ -80,6 +81,7 @@ const Login = () => {
             <img src={googleButton} alt="Botão Google" className={styles.googleButtonLogin} onClick={googleLogin} />
             <span className={styles.signUpLogin}>Não possui uma conta? <span onClick={signUp} className={styles.redirectLogin}>Cadastre-se</span></span>
         </form>
+        <ToastContainer />
     </main>
     );
 };
