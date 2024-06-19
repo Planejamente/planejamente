@@ -14,7 +14,7 @@
     display: flex;
     justify-content: center;
     font-weight: 300;
-    margin-top: 8vh;
+    margin-top: 20vh;
 }
 
 .TimePicker{
@@ -39,10 +39,10 @@
     justify-content: center;
     align-items: center;
     gap: 2vh;
-    margin: 5vh 0;
+    margin: 0 0 5vh 0;
 }
 
 .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Define duas colunas de largura igual */
 }
