@@ -3,20 +3,21 @@
     flex-direction: column;
     color: #fff;
     width: 100%;
+    font-family: "Fredoka-r", sans-serif;
 }
 
-label {
+.inpLabel {
     color: #fff;
     font-size: 14px;
 }
-input {
+.inpInput {
     color: #fff;
     padding: 2%;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
     font-size: 14px;
-    background-color: transparent;    
+    background-color: transparent;
 }
 
 ::placeholder {
@@ -28,4 +29,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .req {
     color: #f00;
+}
+
+.labInputDark {
+    color: #0F4C81;
+}
+
+.inpInputDark {
+    border-bottom: 1px solid #0F4C81;
+    color: #0F4C81;
 }
