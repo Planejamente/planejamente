@@ -30,6 +30,8 @@ const Login = () => {
             .then(async data => {
                 setEmail(data.email);
                 setSub(data.sub);
+                console.log(data.sub);
+                console.log("sub monstro");
                 api.post("auth/login",
                     {
                         email: data.email,
@@ -38,9 +40,17 @@ const Login = () => {
                 .then(async response => {
 
                     const token = response.data.token
+                    console.log(token);
+                    console.log(response.data);
                     const tokenSplitted = token.split('.');
                     const tokenPayload = JSON.parse(atob(tokenSplitted[1]));
                     console.log(tokenPayload)
+                    
+                    Cookies.set('id', tokenPayload.id);
+                    Cookies.set('token', token);
+                    console.log(Cookies.get('id'));
+                    console.log(Cookies.get('token'));
+                    console.log("CUKI");
                     if(tokenPayload.tipoUsuario === "psicologo"){
                         // cookie token
                         Cookies.set('token', token);

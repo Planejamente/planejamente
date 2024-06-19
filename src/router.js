@@ -8,6 +8,7 @@ import Cadastro from "./pages/cadastro/Cadastro";
 import WelcomePac from "./pages/welcomePac/WelcomePac";
 import PerfilPsic from "./pages/PerfilPsic/perfilPsic";
 import PsiPanel from "./pages/psiPanel/psiPanel";
+import PacPanel from "./pages/pacPanel/pacPanel";
 
 function Router() {
     return (
@@ -22,6 +23,7 @@ function Router() {
                     <Route path="/BemVindoPaciente" element={<WelcomePac />} />
                     <Route path="/PerfilPsic/:id" element={<PerfilPsic />} />
                     <Route path="/psipanel" element={<PsiPanel />} />
+                    <Route path="/pacpanel" element={<PacPanel />} />
                 </Routes>
             </BrowserRouter>
         </>
