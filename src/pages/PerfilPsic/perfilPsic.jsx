@@ -7,16 +7,22 @@ import check from "../../utils/assets/check-icon.png"
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import profilePic from "../../utils/assets/sem-imagem-avatar.png"
+import background from "../../utils/assets/vecteezy_modern-abstract-white-and-gray-gradient-background-with_10405766.jpg"
 import api from "../../api";
 
 const PerfilPsic = () => {
+    const centralize = () => {
+        window.scrollTo(0, 0);
+    }
+
     const { id } = useParams();
     const [psicologo, setPsicologo] = useState(null);
 
     const notify = () => toast.success("Agendamento solicitado com sucesso!");
 
     useEffect(() => {
-        api.get(`/${id}`).then((response) => {
+        api.get(`psicologos/${id}`).then((response) => {
             setPsicologo(response.data);
         });
     }, [id]);
@@ -24,16 +30,16 @@ const PerfilPsic = () => {
     console.log(psicologo);
 
     return (
-        <div className={styles['body']}>
-            <NavBar/>
+        <div className={styles['body']} onLoad={centralize}>
+            <NavBar />
             <div className={styles['fundo-container']}>
-                <img src={psicologo?.fundo} alt="Avatar" className={styles['img-fundo']} />
+                <img src={psicologo?.fundo || background} alt="Avatar" className={styles['img-fundo']} />
             </div>
             <div className={styles['info-container']}>
 
                 <div className={styles["header"]}>
                     <div className={styles['img-container']}>
-                        <img src={psicologo?.imagemUrl} alt="Avatar" className={styles['img']} />
+                        <img src={psicologo?.fotoPerfil || profilePic} alt="Avatar" className={styles['img']} />
                     </div>
 
                     <div className={styles["nome"]}>
@@ -45,33 +51,36 @@ const PerfilPsic = () => {
                             </div>
 
                             <div className={styles['atendimentos']}>
-                                <img src={check} alt="Ícone de Check" /><p><b>{psicologo?.qntAtendimentos}</b> Atendimentos</p>
+                                <img src={check} alt="Ícone de Check" /><p><b>{psicologo?.qtdAtendimentos}</b> Atendimentos</p>
                             </div>
                         </div>
-                        <p className={styles['espec']}>{psicologo?.espec}</p>
+                        <p className={styles['espec']}>{psicologo?.especialidade || "Atendimento Clínico"}</p>
                     </div>
-
-                    <p>CRP: {psicologo?.crp}</p>
-                    <p>{psicologo?.estado}|SP</p>
+                    <div className={styles["crpEstado"]}>
+                        <p>CRP: {psicologo?.crp}</p>
+                        <p>{psicologo?.estado}|SP</p>
+                    </div>
                 </div>
-                <div className={styles['buttonSobre']}>
-                    <div>
-                        <button className={styles['bntAgend']} onClick={notify}>Solicitar Agendamento</button>
-                    </div>
-                    <div className={styles['sobre']}>
-                        <h2>Sobre</h2>
-                        <p>{psicologo?.descricao}</p>
-                    </div>
+                <div>
+                    <button className={styles['bntAgend']} onClick={notify}>Solicitar Agendamento</button>
+                </div>
+                {/* <div className={styles['buttonSobre']}> */}
+                <div className={styles['sobre']}>
+                    <h2>Sobre</h2>
+                    <p>{psicologo?.descricao}</p>
+                    {/* </div> */}
                 </div>
                 <div className={styles['espForm']}>
                     <div className={styles['especialidade']}>
                         <h2>Especialidades</h2>
-                        <p>{psicologo?.espec}</p>
+                        <br />
+                        <p>{psicologo?.especialidade[1] || "Atendimento Clínico"}</p>
                     </div>
                     <div className={styles['formacao']}>
                         <h2>Formação</h2>
-                        {/* <p>{psicologo?.formacao}</p> */}
-                        <p>SPTech</p>
+                        <br/>
+                        <h3>{psicologo?.experienciasFormacoes[0] || "Faculdade"}</h3>
+                        <p>{psicologo?.experienciasFormacoes[1] || "Bacharelado"}</p>
                     </div>
                 </div>
             </div>
