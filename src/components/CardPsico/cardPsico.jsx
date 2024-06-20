@@ -61,4 +61,5 @@ const CardPsico = ({nome, headline, crp, especialidade, descricao, avaliacao, qt
     );
 };
 
+
 export default CardPsico;

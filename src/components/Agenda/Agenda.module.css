@@ -10,7 +10,7 @@
   height: 85%;
   width: 80%;
   padding: 16px;
-  border-radius: 3%;
+  border-radius: 16px;
 }
 
 .labelContainerConsultas{
@@ -40,21 +40,17 @@
 }
 
 .cardConsultaBorder{
-  border: 2px solid #255C8C;
-  background-color: #255C8C;
   min-height: 85%;
-  min-width: 32%;
-  border-radius: 3%;
-  border-bottom-left-radius: 8px;
-  box-shadow: 5px 5px 0px 5px #255C8C;
+  min-width: 28%;
   margin: 2%;
+  filter: drop-shadow(2px 2px 0px #265E8D ) drop-shadow(4px 4px 0px #6A90B0 ) drop-shadow(4px 4px 1px #ACC1D3 )
 }
 
 .cardConsulta{
+  border: 2px solid #255C8C;
   background-color: #ffffff;
   min-height: 43vh;
-  border-top-left-radius: 3%;
-  border-top-right-radius: 3%;
+  border-radius: 24px 24px 0 0 ;
 }
 
 .cardConsulta .nomePaciente{
@@ -116,4 +112,5 @@
   font-size: 20px;
   color: #ffffff;
   cursor: pointer;
+  border-radius: 0 0 24px 24px;
 }

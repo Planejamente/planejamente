@@ -31,6 +31,11 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   const [CRP, setCRP] = React.useState("");
   const [sub, setSub] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [accessToken, setAccessToken] = React.useState("");
+  const [cep, setCep] = React.useState("");
+  const [rua, setRua] = React.useState("");
+  const [cidade, setCidade] = React.useState("");
+  const [estado, setEstado] = React.useState("");
   const navigate = useNavigate();
 
 
@@ -80,6 +85,16 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       }})
       .then(async response => response.json())
       .then(async data => {
+        console.log("garantiu essa porra");
+        console.log(hasGrantedAllScopesGoogle(
+          credentialResponse,
+          "openid",
+          "profile",
+          "email",
+          "https://www.googleapis.com/auth/calendar",
+          "https://www.googleapis.com/auth/drive",
+        ));
+        setAccessToken(credentialResponse.access_token);
         setEmail(data.email);
         setSub(data.sub);
         console.log(`agr p api`)
@@ -190,7 +205,8 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         email: email,
         googleSub: sub,
         endereco: null,
-        role: "USER"
+        role: "USER",
+        telefone: "",
         })
         .then(response => {
             if(response.status === 201) {
@@ -204,7 +220,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                     if(response.status === 200){
                       const token = response.data.token
                       Cookies.set('token', token);
-                      navigate("/psipanel")
+                      navigate("/pacpanel")
                     }
                   })
             }
@@ -226,6 +242,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     return;
   }
     if(step === 3) {
+      await verifyCEP(CEP);
       api.post("/psicologos/register", {
         nome: name,
         dataDeNascimento: birth,
@@ -233,7 +250,6 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         genero: sex,
         email: email,
         googleSub: sub,
-        endereco: null,
         role: "ADMIN",
         crp: CRP,
         cnpj: CNPJ,
@@ -243,7 +259,16 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         idCalendarioConsulta: "id_calendario_cons_exemplo",
         linkAnamnese: "url_exemplo_anamnese",
         idAnamnese: "id_anamnese_exemplo",
-        linkFotoDeFundo: null
+        linkFotoDeFundo: null,
+        accessToken: accessToken,
+        endereco: {
+          cep: CEP,
+          rua: rua,
+          cidade: cidade,
+          estado: estado
+
+        }
+
       })
         .then(response => {
             if(response.status === 201) {
@@ -306,9 +331,14 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       toast.error("CEP Inválido");
       return false;
     }
-    await axios.get(`https://brasilapi.com.br/api/cep/v1/{cep}${formattedCep}`)
+    await axios.get(`https://brasilapi.com.br/api/cep/v1/${formattedCep}`)
     .then((response) => {
       if(response.status === 200) {
+        setRua(response.data.street);
+        setCidade(response.data.city);
+        setEstado(response.data.state);
+        console.log(response.data);
+        console.log(response.data.city);
         return true;
       }
       if(response.status === 404) {

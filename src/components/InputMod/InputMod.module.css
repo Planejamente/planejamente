@@ -40,3 +40,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-bottom: 1px solid #0F4C81;
     color: #0F4C81;
 }
+
+.disabledInp {
+    cursor: not-allowed;
+}
+
+.textarea {
+    border: 1px solid #0F4C81;
+    height: 100px;
+    color: #0F4C81;
+}

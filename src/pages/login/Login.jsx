@@ -26,26 +26,35 @@ const Login = () => {
                 Authorization: `Bearer ` + credentialResponse.access_token,
             },
         })
-        Cookies.set('access_token', credentialResponse.access_token);
-        console.log(credentialResponse.access_token)
             .then(response => response.json())
             .then(async data => {
                 setEmail(data.email);
                 setSub(data.sub);
+                console.log(data.sub);
+                console.log("sub monstro");
                 api.post("auth/login",
                     {
                         email: data.email,
                         googleSub: data.sub
                     })
                 .then(async response => {
+
                     const token = response.data.token
+                    console.log(token);
+                    console.log(response.data);
                     const tokenSplitted = token.split('.');
                     const tokenPayload = JSON.parse(atob(tokenSplitted[1]));
                     console.log(tokenPayload)
+                    
+                    Cookies.set('id', tokenPayload.id);
+                    Cookies.set('token', token);
+                    console.log(Cookies.get('id'));
+                    console.log(Cookies.get('token'));
+                    console.log("CUKI");
                     if(tokenPayload.tipoUsuario === "psicologo"){
                         // cookie token
                         Cookies.set('token', token);
-                        console.log(Cookies.get('token'))   
+                        console.log(Cookies.get('token'))
                         navigate("/psipanel")
                     } else if(tokenPayload.tipoUsuario === "paciente"){
                         // cookie token
@@ -55,6 +64,11 @@ const Login = () => {
                     }
 
 
+                })
+                .catch(error => {
+                    console.log(error);
+                    toast.error('Você não possui uma conta, por favor, cadastre-se!')
+                    setTimeout(signUp(), 3000);
                 })
             })
     };
@@ -84,7 +98,6 @@ const Login = () => {
             <img src={googleButton} alt="Botão Google" className={styles.googleButtonLogin} onClick={googleLogin} />
             <span className={styles.signUpLogin}>Não possui uma conta? <span onClick={signUp} className={styles.redirectLogin}>Cadastre-se</span></span>
         </form>
-        <ToastContainer />
     </main>
     );
 };
