@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import profilePic from "../../utils/assets/sem-imagem-avatar.png"
 import background from "../../utils/assets/vecteezy_modern-abstract-white-and-gray-gradient-background-with_10405766.jpg"
 import api from "../../api";
+import Cookies from "js-cookie";
 
 const PerfilPsic = () => {
     const centralize = () => {
@@ -18,8 +19,38 @@ const PerfilPsic = () => {
 
     const { id } = useParams();
     const [psicologo, setPsicologo] = useState(null);
+    const horarios = Cookies.get('horarios') ? JSON.parse(Cookies.get('horarios')) : null;
+    // const token = Cookies.get('token');
 
-    const notify = () => toast.success("Agendamento solicitado com sucesso!");
+    const consultaData = {
+        dtCriacao: new Date().toISOString(),
+        idPsicologo: id,
+        //Tem que pegar o id do paciente logado, esse chubado não da
+        idPaciente: "fa5d35bd-65af-4224-a9eb-bf491afe2eae",
+        linkAnamnese: "linkAnamnese_70b03b99fe87",
+        inicio: horarios.dataHoraInicio,
+        fim: horarios.dataHoraFim,
+        // inicio: "2024-09-30T16:00:01",
+        // fim: "2024-09-30T18:00:01",
+        idAnamnese: "idAnamnese_b3b31d2103de",
+        accessToken: Cookies.get('access_token'),
+        //Calendar ta chunbado ainda
+        calendarId: "5b0bc9e542ba597dbca49bf8b94dfc78d24a34389f1ffc34f997b998b3fad5e3@group.calendar.google.com"
+    };
+    
+    console.log(consultaData);
+
+    const agendarConsulta = async () => {
+        api.post('/consultas', consultaData)
+            .then(response => {
+                console.log(response.data);
+                toast.success("Agendamento solicitado com sucesso!");
+            })
+            .catch(error => {
+                toast.error("Falha ao solicitar agendamento!")
+                console.error('Erro na requisição:', error);
+            });
+    };
 
     useEffect(() => {
         api.get(`psicologos/${id}`).then((response) => {
@@ -28,6 +59,7 @@ const PerfilPsic = () => {
     }, [id]);
 
     console.log(psicologo);
+    console.log(horarios);
 
     return (
         <div className={styles['body']} onLoad={centralize}>
@@ -62,7 +94,7 @@ const PerfilPsic = () => {
                     </div>
                 </div>
                 <div>
-                    <button className={styles['bntAgend']} onClick={notify}>Solicitar Agendamento</button>
+                    <button className={styles['bntAgend']} onClick={agendarConsulta}>Solicitar Agendamento</button>
                 </div>
                 {/* <div className={styles['buttonSobre']}> */}
                 <div className={styles['sobre']}>
@@ -78,7 +110,7 @@ const PerfilPsic = () => {
                     </div>
                     <div className={styles['formacao']}>
                         <h2>Formação</h2>
-                        <br/>
+                        <br />
                         <h3>{psicologo?.experienciasFormacoes[0] || "Faculdade"}</h3>
                         <p>{psicologo?.experienciasFormacoes[1] || "Bacharelado"}</p>
                     </div>

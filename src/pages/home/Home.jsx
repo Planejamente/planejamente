@@ -8,7 +8,6 @@ import celular from "../../utils/assets/Group_192_1.png";
 import bolas from "../../utils/assets/Group_201.svg";
 import agenda from "../../utils/assets/Group_27_1.svg";
 import calendario from "../../utils/assets/calendario.png";
-import arrow from "../../utils/assets/Vector.png"
 import Footer from "../../components/Footer/footer";
 import odsImage from "../../utils/assets/ods3 2.png";
 
@@ -50,7 +49,6 @@ const Home = () => {
                 <p onClick={handleConversarClick} className={styles["conversarLink"]}>
                   Confira
                 </p>
-                {/* <img className={"arrow"} src={arrow} alt="Seta" /> */}
               </div>
 
             </div>
@@ -162,7 +160,7 @@ const Home = () => {
           Informações da ODS no Link
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div >
   );
 };

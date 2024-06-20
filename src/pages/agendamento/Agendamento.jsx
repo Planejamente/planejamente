@@ -10,6 +10,7 @@ import Filter from "../../components/Filter/filter";
 import api from "../../api";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from "js-cookie";
 
 const Agendamento = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -57,33 +58,32 @@ const Agendamento = () => {
         const dataHoraInicio = `${selectedDate.toISOString().split('T')[0]}T${startTime}:00`;
         const dataHoraFim = `${selectedDate.toISOString().split('T')[0]}T${endTime}:00`;
 
-        const token = "Teste";
-
         const horarios = {
             dataHoraInicio: dataHoraInicio,
             dataHoraFim: dataHoraFim,
-            token: token
+            token: Cookies.get('token')
         };
 
-        // const horarios = {
-        //     date: selectedDate.toISOString().split('T')[0],
-        //     startTime: startTime + ':00',
-        //     endTime: endTime + ':00'
-        // };
+        Cookies.set('horarios', JSON.stringify(horarios));
 
-        console.log("Horário Selecionados:", horarios);
+        console.log("Horários Selecionados:", horarios);
 
-        let url = "/psicologos";
+        let url = "/psicologos/filtros";
         const params = [];
 
         if (selectedGender) {
-            params.push(`filtro-genero=${selectedGender}`);
+            params.push(`genero=${selectedGender}`);
         }
         if (selectedCity) {
-            params.push(`filtro-cidade=${selectedCity}`);
+            params.push(`cidade=${selectedCity}`);
         }
-        if (age && ageComparison) {
-            params.push(`filtro-idade=${ageComparison}_${age}`);
+        if (dataHoraInicio) {
+            const dataHoraInicioFilter = dataHoraInicio.replace(/:/g, '%3A');
+            params.push(`dataHoraInicio=${dataHoraInicioFilter}`);
+        }
+        if (dataHoraFim) {
+            const dataHoraFimFilter = dataHoraFim.replace(/:/g, '%3A');
+            params.push(`dataHoraFim=${dataHoraFimFilter}`);
         }
 
         if (params.length > 0) {
@@ -129,35 +129,31 @@ const Agendamento = () => {
         <div className={styles.body}>
             <NavBar />
             <h1 className={styles.title}>Escolha o melhor dia e horário para você</h1>
-                
-                <Filter
-                    selectedGender={selectedGender}
-                    handleGenderChange={handleGenderChange}
-                    selectedCity={selectedCity}
-                    handleCityChange={handleCityChange}
-                    age={age}
-                    handleAgeChange={handleAgeChange}
-                    ageComparison={ageComparison}
-                    handleAgeComparisonChange={handleAgeComparisonChange}
-                />
-
+            <Filter
+                selectedGender={selectedGender}
+                handleGenderChange={handleGenderChange}
+                selectedCity={selectedCity}
+                handleCityChange={handleCityChange}
+                age={age}
+                handleAgeChange={handleAgeChange}
+                ageComparison={ageComparison}
+                handleAgeComparisonChange={handleAgeComparisonChange}
+            />
             <div className={styles.inputs}>
                 <Calendario selectedDate={selectedDate} onDateChange={setSelectedDate} />
             </div>
-                <TimePicker
-                    startTime={startTime}
-                    endTime={endTime}
-                    onStartTimeChange={setStartTime}
-                    onEndTimeChange={setEndTime}
-                    selectedDate={selectedDate}
-                />
-
+            <TimePicker
+                startTime={startTime}
+                endTime={endTime}
+                onStartTimeChange={setStartTime}
+                onEndTimeChange={setEndTime}
+                selectedDate={selectedDate}
+            />
             <div className={styles.buttons}>
                 <div className={styles.bntBusca}>
                     <Buscar onClick={getPsic} />
                 </div>
             </div>
-
             <div className={styles.cards}>
                 {cardsData && cardsData.map((data, index) => (
                     <CardPsico

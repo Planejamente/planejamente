@@ -26,6 +26,7 @@ const Login = () => {
                 Authorization: `Bearer ` + credentialResponse.access_token,
             },
         })
+        Cookies.set('access_token', credentialResponse.access_token);
         console.log(credentialResponse.access_token)
             .then(response => response.json())
             .then(async data => {
@@ -37,7 +38,6 @@ const Login = () => {
                         googleSub: data.sub
                     })
                 .then(async response => {
-
                     const token = response.data.token
                     const tokenSplitted = token.split('.');
                     const tokenPayload = JSON.parse(atob(tokenSplitted[1]));
@@ -45,7 +45,7 @@ const Login = () => {
                     if(tokenPayload.tipoUsuario === "psicologo"){
                         // cookie token
                         Cookies.set('token', token);
-                        console.log(Cookies.get('token'))
+                        console.log(Cookies.get('token'))   
                         navigate("/psipanel")
                     } else if(tokenPayload.tipoUsuario === "paciente"){
                         // cookie token
