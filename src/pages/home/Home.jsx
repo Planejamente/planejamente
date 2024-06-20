@@ -7,9 +7,9 @@ import imgPrincipal from "../../utils/assets/fundo.png";
 import celular from "../../utils/assets/Group_192_1.png";
 import bolas from "../../utils/assets/Group_201.svg";
 import agenda from "../../utils/assets/Group_27_1.svg";
-import calendar from "../../utils/assets/calender.webp";
 import calendario from "../../utils/assets/calendario.png";
 import Footer from "../../components/Footer/footer";
+import odsImage from "../../utils/assets/ods3 2.png";
 
 
 const Home = () => {
@@ -27,73 +27,66 @@ const Home = () => {
     navigate("/confira");
   };
 
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    window.scrollTo({
-      behavior: "smooth",
-      top: section.offsetTop
-    });
-  };  
-
   return (
-    <div className={styles.body}>
-      <div className={styles.background}>
-        <img
-          src={imgPrincipal}
-          alt="Imagem de fundo"
-          className={styles.backgroundImage}
-        />
-        <NavBar logo={Logo} />
-        <div className={styles.container}>
-          <h1 className={styles.title}>
-            Onde há saúde Mental, <span>Há paz</span>
-          </h1>
-          <section id="sectionHome">
-          <p className={styles.paragraph}>
-            Prepare-se hoje para o amanhã e descubra a tranquilidade de cuidar
-            da sua mente conosco.
-          </p>
-          </section>
-          <p onClick={handleConversarClick} className={styles.conversarLink}>
-            Conversar
-          </p>
-        </div>
-        
-      </div>
+    <div className={styles["body"]}>
+      <NavBar />
+      <section id="sectionHome">
+        <div className={styles["container-home"]}>
+          <div className={styles["background"]}>
 
-      <div className={styles.extraContent}>
-      
-        <div className={styles.extraContentInner}>
-        <section id="sectionParaVoce">
-          <p className={styles.extraText}>
-            Ajudando pessoas a
-            <span>
+            <img src={imgPrincipal} alt="Imagem de fundo" className={styles.backgroundImage} />
+
+            <div className={styles["home-content"]}>
+              <h1 className={styles["title"]}>
+                Onde há saúde Mental, <br />Há paz
+              </h1>
+
+              <p className={styles["home-text"]}>
+                Prepare-se hoje para o amanhã e descubra a tranquilidade de cuidar <br /> da sua mente conosco.
+              </p>
+
+              <div className={styles["buttonConv"]}>
+                <p onClick={handleConversarClick} className={styles["conversarLink"]}>
+                  Confira
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sectionParaVoce">
+        <div className={styles["ajudando-pessoas"]}>
+
+          <div className={styles["extraContentInner"]}>
+            <p className={styles["extraText"]}>
+              Ajudando pessoas a
               <br />
-            </span>{" "}
-            ajudar pessoas.
-          </p>
-          </section>
-          <p className={styles.extraText1}>
-            Queremos diminuir a distância entre profissionais e pacientes,
-            desenvolvemos cuidadosamente formas para conectar profissionais de
-            saúde mental a pessoas que buscam suporte emocional de uma forma
-            acessível e confortável.
-          </p>
-          
-          <p onClick={handleConfira} className={styles.confiraLink}>
+              ajudar pessoas.
+            </p>
+            <p className={styles["extraText1"]}>
+              Queremos diminuir a distância entre profissionais e pacientes,
+              desenvolvemos cuidadosamente formas para conectar profissionais de
+              saúde mental a pessoas que buscam suporte emocional de uma forma
+              acessível e confortável.
+            </p>
+
+          </div>
+          <img
+            src={celular}
+            alt="Descrição da imagem"
+            className={styles.extraImage}
+          />
+          <p onClick={handleConfira} className={styles["confiraLink"]}>
             Confira
           </p>
         </div>
-        <img
-          src={celular}
-          alt="Descrição da imagem"
-          className={styles.extraImage}
-        />
-      </div>
+      </section>
 
-      <div className={styles.parte3}>
+      <div className={styles["parte3"]} id="sectionEspcialista">
         <div className={styles.parte3Inner}>
-          <p className={styles.parte3Text}>Profissionais qualificados</p>
+          <h2 className={styles.parte3Text}>Profissionais qualificados</h2>
           <p className={styles.parte3Text1}>
             No universo do cuidado mental, a Planejamente emerge como uma
             plataforma que destaca e celebra a presença de profissionais de
@@ -118,55 +111,57 @@ const Home = () => {
 
       <div className={styles.parte31}>
         <div className={styles.parte31Inner}>
-        <section id="sectionEspcialista">
-          <p className={styles.parte31Text}>Mais Soluções Planejamente</p>
-          
-          <p className={styles.parte31Text}>Dashboard</p>
-          </section>
-          <p className={styles.parte31Text1}>
-          Visualize o Sucesso do Seu Atendimento em Tempo Real! Entenda, em um
+          <h1 className={styles.parte31Text}>Mais Soluções Planejamente</h1>
+
+          <h1 className={styles["dashTitle"]}>Dashboard</h1>
+
+          <p className={styles["textoDash"]}>
+            Visualize o Sucesso do Seu Atendimento em Tempo Real! Entenda, em um
             piscar de olhos, a qualidade do seu atendimento e seu desempenho com
             dashboards inteligentes.
-          </p>
-
-          <p
-            onClick={handleConfiraProfissionais}
-            className={styles.confiraLinkProfissionais}
-          >
-            Confira
           </p>
         </div>
         <img
           src={agenda}
           alt="Descrição da imagem"
-          className={styles.parte31Image}
+          className={styles["agenda"]}
         />
       </div>
 
       <div className={styles.parte31}>
-        <div className={styles.parte31Inner}>
-          <p className={styles.parte31Text}>Agenda</p>
-          <p className={styles.parte31Text1}>
-         Chega de cadernos rabiscados, queremos facilitar para você, com a
-              integração ao Google Calendar, você terá uma visão organizada com
-              direito a lembretes
-          </p>
-
-          <p
-            onClick={handleConfiraProfissionais}
-            className={styles.confiraLinkProfissionais}
-          >
-            Confira
-          </p>
-        </div>
         <img
           src={calendario}
           alt="Descrição da imagem"
-          className={styles.parte31Image}
+          className={styles["calendario"]}
         />
+        <div className="agendaSection">
+          <h1 className={styles["agendaTitle"]}>Agenda</h1>
+          <p className={styles["calenText"]}>
+            Chega de cadernos rabiscados, queremos facilitar para você, com a
+            integração ao Google Calendar, você terá uma visão organizada com
+            direito a lembretes
+          </p>
+        </div>
       </div>
-      <Footer  />
-    </div>
+      <div className={styles["ods-section"]}>
+        <div className={styles["ods-text"]}>
+          Para nós, cada interação
+          é um passo em direção à saúde  mental, alinhada com a ODS 3.
+          Conectamos corações e mentes,
+          promovendo o  bem-estar e a cura.
+          Nosso propósito é claro:
+          ajudar pessoas a ajudar  pessoas,
+          Uma conversa por vez
+        </div>
+        <div className={styles["ods-image"]}>
+          <a href="https://brasil.un.org/pt-br/sdgs/3" target="_blank" rel="noopener noreferrer">
+            <img src={odsImage} alt="Informações da ODS no Link" />
+          </a>
+          Informações da ODS no Link
+        </div>
+      </div>
+      <Footer />
+    </div >
   );
 };
 export default Home;
