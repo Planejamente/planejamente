@@ -65,6 +65,11 @@ const Login = () => {
 
 
                 })
+                .catch(error => {
+                    console.log(error);
+                    toast.error('Você não possui uma conta, por favor, cadastre-se!');
+                    signUp();
+                })
             })
     };
 
