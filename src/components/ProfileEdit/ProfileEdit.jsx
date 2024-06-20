@@ -70,9 +70,8 @@ useEffect(() => {
       console.error('Failed to fetch data', error);
     }
   };
-
-  if (reload) setReload(false);
-  }, [reload]); // Ensure dependencies are correctly listed, if any
+    fetchData()
+  }, []); // Ensure dependencies are correctly listed, if any
 
   const mascara = Mascara.instance;
 

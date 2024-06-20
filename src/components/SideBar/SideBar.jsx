@@ -26,12 +26,16 @@ const SideBar = ({ mode, actualPage, setActualPage}) => {
                 </nav>
             );
         case "pac":
-            switch (actualPage) {
-                case "perfil" :
-                    return (<></>)
-                case "agenda" :
-                    return (<></>)
-            }
+            return (
+                <nav className={`${styles.sidebarPsi} ${styles.sidebar}`}>
+                    <img className={`${styles.logoPsiPanel}`} src={logo} alt="Logo" />
+                    <div className={styles.sideItems}>
+                        <SideBarItem text="perfil" active={activeItem === "perfil" ? "a" : null} click={() => handleClick("perfil")}/>
+                        <SideBarItem text="agenda" active={activeItem === "agenda" ? "a" : null} click={() => handleClick("agenda")}/>
+                    </div>
+                    <SideBarItem text="sair" />
+                </nav>
+            );
     }
 }
 
