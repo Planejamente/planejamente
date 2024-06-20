@@ -220,7 +220,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                     if(response.status === 200){
                       const token = response.data.token
                       Cookies.set('token', token);
-                      navigate("/psipanel")
+                      navigate("/pacpanel")
                     }
                   })
             }
