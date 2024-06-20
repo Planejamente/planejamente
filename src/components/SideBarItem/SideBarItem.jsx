@@ -4,6 +4,7 @@ import styles from "./SideBarItem.module.css";
 import userLogo from "../../utils/assets/user_logo.svg";
 import gearLogo from "../../utils/assets/gear_logo.svg";
 import logoutLogo from "../../utils/assets/logout.svg";
+import calendarLogo from "../../utils/assets/calendar_logo.svg";
 const SideBarItem = ({text, active, click}) => {
     switch (text) {
         case "perfil":
@@ -16,7 +17,7 @@ const SideBarItem = ({text, active, click}) => {
             case "agenda":
                 return (
                     <div className={`${styles.sideItem} ${active ? styles.sideActive : ''}`} onClick={click}>
-                        <img src={userLogo}
+                        <img src={calendarLogo}
                         alt="" />
                         <p>Agenda</p>
                     </div>

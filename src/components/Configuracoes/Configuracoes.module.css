@@ -15,7 +15,7 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  border-radius: 4%;
+  border-radius: 16px;
 }
 
 .containerLabel{
@@ -108,16 +108,16 @@
   display: flex;
   background-color: #F5F5F5;
   border: 5px solid #ffffff;
-  width: 75%;
-  height: 75%;
+  width: 60%;
+  height: 60%;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .molduraFoto img{
   width: 100%;
-  height: 100%;
   border-radius: 50%;
 }
 

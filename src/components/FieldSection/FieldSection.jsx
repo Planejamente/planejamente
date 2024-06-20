@@ -32,6 +32,10 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   const [sub, setSub] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [accessToken, setAccessToken] = React.useState("");
+  const [cep, setCep] = React.useState("");
+  const [rua, setRua] = React.useState("");
+  const [cidade, setCidade] = React.useState("");
+  const [estado, setEstado] = React.useState("");
   const navigate = useNavigate();
 
 
@@ -238,6 +242,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     return;
   }
     if(step === 3) {
+      await verifyCEP(CEP);
       api.post("/psicologos/register", {
         nome: name,
         dataDeNascimento: birth,
@@ -245,7 +250,6 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         genero: sex,
         email: email,
         googleSub: sub,
-        endereco: null,
         role: "ADMIN",
         crp: CRP,
         cnpj: CNPJ,
@@ -257,6 +261,13 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
         idAnamnese: "id_anamnese_exemplo",
         linkFotoDeFundo: null,
         accessToken: accessToken,
+        endereco: {
+          cep: CEP,
+          rua: rua,
+          cidade: cidade,
+          estado: estado
+
+        }
 
       })
         .then(response => {
@@ -320,9 +331,14 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
       toast.error("CEP Inválido");
       return false;
     }
-    await axios.get(`https://brasilapi.com.br/api/cep/v1/{cep}${formattedCep}`)
+    await axios.get(`https://brasilapi.com.br/api/cep/v1/${formattedCep}`)
     .then((response) => {
       if(response.status === 200) {
+        setRua(response.data.street);
+        setCidade(response.data.city);
+        setEstado(response.data.state);
+        console.log(response.data);
+        console.log(response.data.city);
         return true;
       }
       if(response.status === 404) {
