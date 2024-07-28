@@ -1,9 +1,15 @@
+.content{
+  display: flex;
+  gap: 3vw;
+
+}
+
 .formField {
-    margin: 50px;
     font-family: 'Fredoka-l';
   }
   
   .formField input {
+    font-family: 'Fredoka-l';
     padding: 5px 15px;
     outline: none;
     border: none;
@@ -11,10 +17,8 @@
     background-color: #EDEDED;
     color: #333;
     font-size: 20px;
-    font-weight: 550;
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 0 6px transparent;
-  
   }
   
   .formField input:hover,

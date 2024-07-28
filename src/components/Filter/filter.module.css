@@ -16,9 +16,9 @@
 
 .filtro:hover {
     transform: scale(1.1);
-} */
+}
 
-/* .picklists{
+.picklists{
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -49,6 +49,9 @@ input[type="number"] {
     padding: 5px;
     color: #0F4C81;
     font-family: 'Fredoka-l';
+    background: none;
+    border-style: none;
+    border-bottom: 1px solid #0F4C81;
 }
 
 select {
