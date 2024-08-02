@@ -89,11 +89,15 @@ const Login = () => {
         navigate('/cadastro');
     }
 
+    const goToHomePage = () => {
+        navigate("/");
+      };
+
     return (
 
     <main className={styles.mainLogin}>
         <form className={styles.formLogin}>
-            <img src={logo} alt="Logo" className={styles.logoLogin} />
+            <img src={logo} alt="Logo" className={styles.logoLogin}  onClick={goToHomePage}/>
             <h1 className={styles.titleLogin}>Bem vindo de volta</h1>
             <img src={googleButton} alt="Botão Google" className={styles.googleButtonLogin} onClick={googleLogin} />
             <span className={styles.signUpLogin}>Não possui uma conta? <span onClick={signUp} className={styles.redirectLogin}>Cadastre-se</span></span>
