@@ -10,6 +10,7 @@ import Filter from "../../components/Filter/filter";
 import api from "../../api";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from "js-cookie";
 
 const Agendamento = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -64,6 +65,8 @@ const Agendamento = () => {
             dataHoraFim: dataHoraFim,
             token: token
         };
+
+        Cookies.set('horarios', JSON.stringify(horarios));
 
         // const horarios = {
         //     date: selectedDate.toISOString().split('T')[0],

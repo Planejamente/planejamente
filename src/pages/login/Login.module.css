@@ -21,7 +21,13 @@ form.formLogin {
 .logoLogin {
     height: 8vh;
     margin: 2vh 0 4vh 0;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+} 
+.logoLogin:hover {
+    transform: scale(1.05); 
 }
+
 .titleLogin {
     height: 8vh;
     font-size: 5vh;
