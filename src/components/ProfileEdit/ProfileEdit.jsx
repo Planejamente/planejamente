@@ -46,8 +46,10 @@ const [formacoes, setFormacoes] = useState([]); // [ { titulo: '', dataInicio: '
     const fetchData = async () => {
       try {
         // Fetching psychologist data
-        console.log("tenteiii");
-        const responsePsicologo = await api.get(
+        if(mode === "psi") {
+
+          console.log("tenteiii");
+          const responsePsicologo = await api.get(
           `/psicologos/${Cookies.get("id")}`,
           {
             headers: {
@@ -101,8 +103,11 @@ const [formacoes, setFormacoes] = useState([]); // [ { titulo: '', dataInicio: '
         console.log(' experiencias' , experiencias);
         setFormacoes(formacoes);
         setExps(experiencias);
-
+        
         console.log(responseExp.data);
+      } else if(mode === 'pac'){
+        
+      }
       } catch (error) {
         console.error("Failed to fetch data", error);
       }
