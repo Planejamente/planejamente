@@ -20,38 +20,39 @@ const PerfilPsic = () => {
     const { id } = useParams();
     const [psicologo, setPsicologo] = useState(null);
     const horarios = Cookies.get('horarios') ? JSON.parse(Cookies.get('horarios')) : null;
-    console.log("Cokkie horários:" + horarios);
-
-    const consultaData = {
-        dtCriacao: new Date().toISOString(),
-        idPsicologo: id,
-        //Tem que pegar o id do paciente logado, esse chubado não da
-        idPaciente: "6e031bb1-9bf2-417a-aa41-8b9baa6675dd",
-        // idPaciente: token,
-        linkAnamnese: "linkAnamnese_70b03b99fe87",
-        // inicio: horarios.dataHoraInicio,
-        // fim: horarios.dataHoraFim,
-        inicio: "2024-12-31T16:00:01",
-        fim: "2024-12-31T18:00:01",
-        idAnamnese: "idAnamnese_b3b31d2103de",
-        // accessToken: Cookies.get('access_token'),
-        accessToken: "ya29.a0AXooCgtO4jijhZnN83Z0xMsFUsD2hxnK-fLHgsDdBUKmaQcajNkr4kxHNxSPlA4bcI3TbWNwuXnLHROs3C_OLkNybSh6O-avK9uWF52Ho4z7jsQM-3QAQAajmT0WIoBruN-siCWQIojUqRHyTMZMyx_OyGdCEPg7sGjjaCgYKAS0SARASFQHGX2Mi2liW4XI5GyZ-zKN81WDZCA0171",
-        //Calendar ta chunbado ainda
-        calendarId: "800be934d85c548a2df2bdf97bbaf7d76864a46b1b99753487ede7e89fd9389b@group.calendar.google.com"
-    };
-
-    console.log(consultaData);
+    var inicio = horarios.dataHoraInicio + ":01";
+    var fim = horarios.dataHoraFim + ":01";
+    var idPaciente = Cookies.get('id');
+    var access_token = Cookies.get('access_token')
+    console.log(idPaciente);
+    console.log("Cokkie horários:" + horarios.dataHoraInicio);
+    console.log("Cokkie horários:" + horarios.dataHoraFim);
 
     const agendarConsulta = async () => {
-        api.post('/consultas', consultaData)
-            .then(response => {
-                console.log(response.data);
-                toast.success("Agendamento solicitado com sucesso!");
-            })
-            .catch(error => {
-                toast.error("Falha ao solicitar agendamento!")
-                console.error('Erro na requisição:', error);
-            });
+        const consultaData = {
+            dtCriacao: new Date().toISOString(),
+            idPsicologo: id,
+            idPaciente: idPaciente,
+            linkAnamnese: "linkAnamnese_70b03b99fe87",
+            inicio: inicio,
+            fim: fim,
+            idAnamnese: "idAnamnese_b3b31d2103de",
+            accessToken: access_token,
+            calendarId: psicologo.idCalendarioConsulta
+        };
+
+        try {
+            const response = await api.post('/consultas', consultaData);
+            console.log(response.data);
+            toast.success("Agendamento solicitado com sucesso!");
+        } catch (error) {
+            if (error.response && error.response.status === 500) {
+                toast.error("Participantes não estão disponíveis neste horário.");
+            } else {
+                toast.error("Falha ao solicitar agendamento!");
+            }
+            console.error('Erro na requisição:', error);
+        }
     };
 
     useEffect(() => {
