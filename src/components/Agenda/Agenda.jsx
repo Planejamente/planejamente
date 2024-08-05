@@ -10,18 +10,36 @@ const Agenda = ({mode}) => {
   // 2. Criar um useEffect para buscar as consultas
   // 3. Fazer um map para percorrer as consultas e criar os cards
   const [consultas, setConsultas] = useState([]); // [{}
-  useEffect(() => {
-    const fetchConsultas = async () => {
-      if(mode === "psi"){
-        const response = await api.get(`/consultas/psicologo/${Cookies.get("id")}`);
-        setConsultas(response.data);
-      } else if(mode === "pac"){
-        const response = await api.get(`/consultas/paciente/${Cookies.get("id")}`);
-        setConsultas(response.data);
-      }
-    }
+  const fetchConsultas = async () => {
+    try {
+      let response;
+      const userId = Cookies.get("id");
 
-  }, []);
+      if (mode === "psi") {
+        response = await api.get(`/consultas/psicologo/${userId}`,
+          { headers: { Authorization: `Bearer ${Cookies.get("token")}` } }
+        );
+      } else if (mode === "pac") {
+        response = await api.get(`/consultas/paciente/${userId}`,
+          { headers: { Authorization: `Bearer ${Cookies.get("token")}` } }
+        );
+      }
+      console.log(response);
+      console.log(response);
+
+      if (response && response.data) {
+        setConsultas(response.data);
+      } else {
+        throw new Error('Resposta da API inválida');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar consultas:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchConsultas();
+  }, [mode]);
 
   switch (mode) {
   case "psi":
@@ -142,6 +160,8 @@ const Agenda = ({mode}) => {
       </div>
     </div>
   </>
+  default:
+    return <></>;
     }
   }
 
