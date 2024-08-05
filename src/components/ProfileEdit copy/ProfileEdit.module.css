@@ -1,0 +1,19 @@
+.containerProfile {
+    height: 80%;
+    border: 2px solid #fff;
+    width: 40%;
+    color: #0F4C81;
+    background-color: #fff;
+}
+
+.inputProfile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2%;
+}
+
+.btnSaveProfile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

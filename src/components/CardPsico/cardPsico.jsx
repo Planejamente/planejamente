@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./cardPsico.module.css";
 import profilePic from "../../utils/assets/sem-imagem-avatar.png"
-// import star from "../../utils/assets/Star 13.png"
-// import check from "../../utils/assets/check-icon.png"
+import star from "../../utils/assets/Star 13.png"
+import check from "../../utils/assets/check-icon.png"
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -48,14 +48,14 @@ const CardPsico = ({nome, headline, crp, especialidade, descricao, avaliacao, qt
                 <div className={styles['sobre']}>
                     <p>{descricao}</p>
                 </div>
-                {/* <div className={styles['infos']}>
+                <div className={styles['infos']}>
                     <div className={styles['nota']}>
                         <img src={star} alt="Estrela" /><p>{avaliacao}</p>
                     </div>
                     <div className={styles['atendimentos']}>
                         <img src={check} alt="Ícone de Check"/><p><b>{qtdAtendimentos}</b> Atendimentos</p>
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );
