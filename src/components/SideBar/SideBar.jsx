@@ -33,9 +33,11 @@ const SideBar = ({ mode, actualPage, setActualPage}) => {
                         <SideBarItem text="perfil" active={activeItem === "perfil" ? "a" : null} click={() => handleClick("perfil")}/>
                         <SideBarItem text="agenda" active={activeItem === "agenda" ? "a" : null} click={() => handleClick("agenda")}/>
                     </div>
-                    <SideBarItem text="sair" />
+                    <SideBarItem text="sair"/>
                 </nav>
             );
+            default:
+                return null;
     }
 }
 

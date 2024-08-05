@@ -5,7 +5,16 @@ import userLogo from "../../utils/assets/user_logo.svg";
 import gearLogo from "../../utils/assets/gear_logo.svg";
 import logoutLogo from "../../utils/assets/logout.svg";
 import calendarLogo from "../../utils/assets/calendar_logo.svg";
+import Cookies from "js-cookie";
+
 const SideBarItem = ({text, active, click}) => {
+    const navigate = useNavigate();
+    const handleSair = () => {
+        Cookies.remove("token");
+        Cookies.remove("id");
+        navigate("/login");
+    }
+
     switch (text) {
         case "perfil":
             return (
@@ -31,12 +40,14 @@ const SideBarItem = ({text, active, click}) => {
                     );
     case "sair":
         return (
-            <div className={`${styles.sideItem} ${styles.sideActive}`}>
+            <div className={`${styles.sideItem} ${styles.sideActive}`} onClick={handleSair}>
                 <img src={logoutLogo}
                 alt="" />
                 <p>Sair</p>
             </div>
         );
+        default:
+            return null;
     }
 
 }
