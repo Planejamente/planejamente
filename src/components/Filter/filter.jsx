@@ -28,9 +28,10 @@ const Filter = ({
                 <select id="citySelect" name="city" value={selectedCity} onChange={handleCityChange}>
                     <option value="">Selecione</option>
                     <option value="sao_paulo">São Paulo</option>
-                    <option value="campinas">Campinas</option>
-                    <option value="santos">Santos</option>
+                    <option value="Campinas">Campinas</option>
+                    <option value="Santos">Santos</option>
                     <option value="ribeirao_preto">Ribeirão Preto</option>
+                    <option value="Diadema">Diadema</option>
                     {/* Adicione mais cidades conforme necessário */}
                 </select>
 

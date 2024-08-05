@@ -20,6 +20,8 @@ const Login = () => {
     const [sub, setSub] = React.useState('');
 
     const handleGoogleSuccess = async (credentialResponse) => {
+        Cookies.set('access_token', credentialResponse.access_token, { expires: 1 }); // expires in 1 day
+        console.log(Cookies.get('access_token'));
         await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
             method: 'POST',
             headers: {

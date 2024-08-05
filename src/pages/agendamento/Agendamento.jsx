@@ -55,10 +55,10 @@ const Agendamento = () => {
             return;
         }
 
-        const dataHoraInicio = `${selectedDate.toISOString().split('T')[0]}T${startTime}:00`;
-        const dataHoraFim = `${selectedDate.toISOString().split('T')[0]}T${endTime}:00`;
+        const dataHoraInicio = `${selectedDate.toISOString().split('T')[0]}T${startTime}`;
+        const dataHoraFim = `${selectedDate.toISOString().split('T')[0]}T${endTime}`;
 
-        const token = "Teste";
+        const token = Cookies.get('token');
 
         const horarios = {
             dataHoraInicio: dataHoraInicio,
@@ -76,18 +76,20 @@ const Agendamento = () => {
 
         console.log("Horário Selecionados:", horarios);
 
-        let url = "/psicologos";
+        let url = `${api.defaults.baseURL}/psicologos`;
         const params = [];
 
         if (selectedGender) {
-            params.push(`filtro-genero=${selectedGender}`);
+            params.push(`genero=${selectedGender}`);
         }
         if (selectedCity) {
-            params.push(`filtro-cidade=${selectedCity}`);
+            params.push(`cidade=${selectedCity}`);
         }
         if (age && ageComparison) {
-            params.push(`filtro-idade=${ageComparison}_${age}`);
+            params.push(`idade=${ageComparison}_${age}`);
         }
+        params.push(`dataHoraInicio=${encodeURIComponent(dataHoraInicio)}`);
+        params.push(`dataHoraFim=${encodeURIComponent(dataHoraFim)}`);
 
         if (params.length > 0) {
             url += `?${params.join("&")}`;
