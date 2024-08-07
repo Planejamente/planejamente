@@ -137,7 +137,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
   });
 
   async function handleGoogleSuccessPac(credentialResponse) {
-
+    Cookies.set('access_token', credentialResponse.access_token, { expires: 1 });
     await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
       method: 'GET',
       headers: {
@@ -220,7 +220,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                     if(response.status === 200){
                       const token = response.data.token
                       Cookies.set('token', token);
-                      navigate("/pacpanel")
+                      navigate("/login")
                     }
                   })
             }
@@ -279,9 +279,20 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
                     googleSub: sub
                 })
                 .then(response => {
-                    if(response.status === 200){
+
+                  
+                  const token = response.data.token
+                  console.log(token);
+                  console.log(response.data);
+                  const tokenSplitted = token.split('.');
+                  const tokenPayload = JSON.parse(atob(tokenSplitted[1]));
+                  console.log(tokenPayload)              
+                  Cookies.set('id', tokenPayload.id);
+                  console.log(Cookies.get('id'));
+                  if(response.status === 200){
                         const token = response.data.token
                       Cookies.set('token', token);
+
                         navigate("/psipanel")
                     }
                 })

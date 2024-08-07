@@ -47,9 +47,11 @@ function Componente() {
           </>
         )}
       </div>
-      <div className="login-button">
-        <span onClick={goToLogin}>Login</span>
-      </div>
+      {isHomePage && (
+        <div className="login-button">
+          <span onClick={goToLogin}>Login</span>
+        </div>
+      )}
     </div>
   );
 }

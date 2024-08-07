@@ -1,6 +1,28 @@
- main.mainPsiPanel {
-    background-color: #4EACFF;
-    height: 100vh;
-    width: 100vw;
-     display: flex;
+main.mainPsiPanel {
+   background-color: #4EACFF;
+   height: 100vh;
+   width: 100vw;
+    display: flex;
+}
+
+.buttonContainer {
+  text-align: center; /* Centralizar o botão */
+  position: absolute;
+  margin: 10vh 1.5vw 0;
+  width: 5vw;
+  font-family: 'Fredoka-r', sans-serif;
+}
+
+.agendamentoButton {
+  background-color: #007bff; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Remover borda */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro ao passar sobre o botão */
+}
+
+.agendamentoButton:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
