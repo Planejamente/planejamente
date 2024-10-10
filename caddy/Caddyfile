@@ -1,0 +1,4 @@
+planejamente.tech {
+    root * /usr/share/caddy
+    file_server
+}
