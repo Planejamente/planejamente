@@ -94,6 +94,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
           "https://www.googleapis.com/auth/calendar",
           "https://www.googleapis.com/auth/drive",
         ));
+        console.log(credentialResponse);
         setAccessToken(credentialResponse.access_token);
         setEmail(data.email);
         setSub(data.sub);
