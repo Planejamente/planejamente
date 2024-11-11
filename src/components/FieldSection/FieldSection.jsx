@@ -147,6 +147,7 @@ const FieldSection = ({ mode, step, onGoStep, onBackStep }) => {
     })
         .then(async response => response.json())
         .then(async data => {
+              console.log(data)
               setEmail(data.email);
               setSub(data.sub);
               console.log(`agr p api`)
