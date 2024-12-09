@@ -1,4 +1,13 @@
 :80 {
     root * /usr/share/caddy
     file_server
+    try_files {path} /index.html
+    handle_errors {
+        rewrite * /index.html
+        file_server
+    }
+    tls {
+        on_demand
+    }
+
 }
