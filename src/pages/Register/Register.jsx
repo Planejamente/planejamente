@@ -16,17 +16,17 @@ import axios from "axios";
 const Register = () => {
   const [isPacSide, setIsPacSide] = useState(true);
   const [step, setStep] = useState(1);
-  const [name, setName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [gender, setGender] = useState("");
-  const [cpf, setCpf] = useState("");
+  const [name, setName] = useState("Laura Ramos");
+  const [birthDate, setBirthDate] = useState("1990-04-05");
+  const [gender, setGender] = useState("Feminino");
+  const [cpf, setCpf] = useState("246.072.940-55");
   const [email, setEmail] = useState("");
   const [googleSub, setGoogleSub] = useState("");
   const [accessToken, setAccessToken] = useState("");
   const [phone, setPhone] = useState("");
-  const [cep, setCep] = useState("");
-  const [cnpj, setCnpj] = useState("");
-  const [crp, setCrp] = useState("");
+  const [cep, setCep] = useState("01001-000");
+  const [cnpj, setCnpj] = useState("88.764.526/0001-99");
+  const [crp, setCrp] = useState("12345/6");
 
 
   const setCpfFormat = (value) => {

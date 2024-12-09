@@ -212,7 +212,7 @@ const psiPanelDisplay = ({
   }
 
   const meetFuck = () => {
-    window.location.href = 'https://meet.google.com/';
+    window.location.href = 'https://meet.google.com/adx-exmx-icx';
   }
 
 
