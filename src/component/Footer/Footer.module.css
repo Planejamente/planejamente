@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0F4C81;
+}
+
+.linksAndLogoSection {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.linksAndLogoSubSection {
+  margin-top: 3vh;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.4rem;
+  font-family: 'Fredoka-r';
+}
+.divLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 16vh;
+}
