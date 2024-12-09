@@ -1,6 +1,601 @@
- main.mainPsiPanel {
-    background-color: #4EACFF;
-    height: 100vh;
-    width: 100vw;
-     display: flex;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.psiPanelContainer {
+  width: 100vw;  
+  height: 100vh;
+  background: url('../../asset/bg-dark.svg') repeat center center fixed;
+  background-repeat: repeat-y;
+  display: flex;
+}
+
+.psiSideBar {
+  width: 16%;
+  height: 100%;  
+  /* background-color: #838383; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.psiSideBarFodase {
+  background: rgba(78, 172, 255, 0.55); /* Usando #4EACFF com opacidade */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(78, 172, 255, 0.88); /* Usando #4EACFF com opacidade */
+
+  width: 90%;
+  height: 96%;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.itemNavbar {
+  margin: 5% 0 ;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  width: 88%;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  border-radius: 99px;
+  font-size: 1.6rem;
+  font-family: 'Fredoka-m';
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.itemNavbar span {
+  margin-left: 4%;
+}
+
+.itemNavbar:hover {
+  background-color: #fff;
+  color: #0F4C81;
+  transition: all 0.3s ease;
+}
+
+.activeItemNavbar {
+  margin: 10% 0 ;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  width: 88%;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  border-radius: 99px;
+  font-size: 1.6rem;
+  font-family: 'Fredoka-m';
+  transition: all 0.3s ease;
+  background-color: #fff;
+  color: #0F4C81;
+  cursor: pointer;
+}
+
+.activeItemNavbar span {
+  margin-left: 4%;
+}
+
+.itemNavbarIcon {
+  height: px;
+}
+.psiSideBarUser {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.psiSideBarUser img {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 99px;
+  border: 2px solid #ffffff;
+}
+
+
+.psiSideBarLogout {
+  color: #ff3030;
+  border-bottom: 2px solid #ff3030;
+  border-left: 2px solid #ff3030;
+  width: 88%;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  border-radius: 99px;
+  font-size: 1.6rem;
+  font-family: 'Fredoka-m';
+  transition: all 0.3s ease;
+  justify-content: center;
+  margin-top: 146%;
+  cursor: pointer;
+}
+
+.psiSideBarLogout:hover {
+  background-color: #ff3030;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.psiPanelDisplay {
+  width: 84%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.agendaDisplay {
+  width: 80%;
+  height: 60%;
+  background-color: #fff;
+  border-radius: 32px;
+}
+
+.titleAgendaDisplay {
+  border-radius: 32px;
+  width: 100%;
+  height: 24%;
+  background-color: #fff;
+  font-family: 'Fredoka-m';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  color: #0F4C81;
+}
+
+.consultasDisplay {
+  width: 100%;
+  height: 70%;
+  background-color: #fff;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+}
+
+.cardConsulta {
+  width: 24%;
+  height: 88%;
+  margin: 0 2%;
+  background-color: #ffffff;
+  border: 1px solid #0F4C81;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  flex: 0 0 24%;
+  filter: drop-shadow(4px 4px 0px #0F4C81);
+  transition: all 0.3s ease;
+  flex-direction: column;
+}
+
+.cardConsulta:hover {
+  filter: drop-shadow(8px 8px 0px #0F4C81);
+  transition: all 0.3s ease;
+}
+
+.cardConsultaTop {
+  width: 100%;
+  height: 76%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cardConsultaTop p {
+  font-family: 'Fredoka-l';
+  font-size: 1.8rem;
+  color: #0F4C81;
+}
+
+p.clientNameCardConsulta {
+  font-family: 'Fredoka-m';
+  font-size: 2rem;
+  color: #0F4C81;
+}
+
+p.hourCardConsulta {
+  font-family: 'Fredoka-m';
+  font-size: 2rem;
+  color: #0F4C81;
+}
+
+p.dateCardConsulta {
+  font-family: 'Fredoka-m';
+  font-size: 2rem;
+  color: #0F4C81;
+}
+
+.cardConsultaBottom {
+  width: 100%;
+  height: 12%;
+  background-color: #0F4C81;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.cardConsultaBottomm {
+
+  width: 100%;
+  height: 12%;
+  background-color: #3b81bd;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.iframeContainer iframe {
+  border-radius: 32px;
+  border: none;
+  background-color: #fff;
+}
+
+.settingsDisplay {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileSettings {
+  width: 60%;
+  height: 80%;
+  background-color: #fff;
+  margin: 0 1%;
+  border-radius: 32px;
+  border: 1px solid #fff;
+}
+
+.detailsSettings {
+  margin: 0 0 0 1%;
+  width: 32%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerProfileSettings {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 2rem;
+  color: #0F4C81;
+}
+
+.inputsProfileSettings {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0F4C81;
+}
+
+.leftInputProfile {
+  width: 50%;
+  height: 100%;
+  background-color: #0F4C81;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rightInputProfile {
+  width: 50%;
+  height: 100%;
+  background-color: #0F4C81;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inputFodase {
+  width: 70%;
+  height: 12%;
+  text-align: left;
+  margin: 4%;
+}
+.inputFodase p {
+  font-size: 1.2rem;
+  font-family: 'Fredoka-r', sans-serif;
+  color: #fff;
+}
+
+.inputFodase input {
+  width: 100%;
+  height: 50%;
+  background: none;
+  border: none;
+  border-bottom: 3px solid #FFF;
+  color: #FFF;
+  font-size: 1.2rem;
+  font-family: 'Fredoka-l', sans-serif;
+}
+
+.buttonsProfileSettings {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsProfileSettings button {
+  width: 40%;
+  height: 80%;
+  background-color: #0F4C81;
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  font-family: 'Fredoka-m';
+  font-size: 1.6rem;
+}
+
+.detailAdd {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 32px;
+  font-family: 'Fredoka-m';
+  font-size: 2.0rem;
+  color: #0F4C81;
+}
+
+.detailAdd img {
+  cursor: pointer;
+}
+
+.profileConfig {
+  background-color: #fff;
+  width: 66%;
+  height: 60%;
+  border-radius: 32px;
+}
+
+.profileConfigHeader {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 2rem;
+  color: #0F4C81;
+}
+
+.profileConfigBody {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.profileConfigA {
+  border-radius: 32px;
+  width: 30%;
+  height: 80%;
+  background-color: #F1F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.profileConfigA button {
+  width: 50%;
+  height: 10%;
+  background-color: #0F4C81;
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  font-family: 'Fredoka-m';
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.profileConfigA p {
+  font-family: 'Fredoka-l';
+  font-size: 1.6rem;
+  color: #0F4C81;
+}
+
+.profileConfigB {
+  border-radius: 32px;
+  width: 30%;
+  height: 80%;
+  background-color: #F1F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.profileConfigB button {
+  width: 50%;
+  height: 10%;
+  background-color: #0F4C81;
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  font-family: 'Fredoka-m';
+  font-size: 1.6rem;
+}
+
+.profileConfigB p {
+  font-family: 'Fredoka-l';
+  font-size: 1.6rem;
+  color: #0F4C81;
+}
+
+.profileConfigC {
+  border-radius: 32px;
+  width: 30%;
+  height: 80%;
+  background-color: #F1F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.profileConfigC button {
+  width: 50%;
+  height: 10%;
+  background-color: #0F4C81;
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  font-family: 'Fredoka-m';
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.profileConfigC p {
+  font-family: 'Fredoka-l';
+  font-size: 1.6rem;
+  color: #0F4C81;
+  text-align: center;
+}
+
+.modalExperiencia {
+  position: absolute;
+  background-color: #fff;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modalFodaseFodase {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalFodase {
+  position: absolute;
+  width: 64%;
+  height: 64%;
+  border-radius: 32px;
+  background-color: #4eacff;
+}
+
+.titleModalFodase {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 2rem;
+  color: #fff;
+}
+
+.contentModalFodase {
+  width: 100%;
+  height: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.btnCriarPlano {
+  width: 30%;
+  height: 10%;
+  background-color: #0F4C81;
+  color: #fff;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 1.4rem;
+  margin: 2% 0;
+}
+
+.planosFodase {
+  width: 80%;
+  height: 72%;
+  margin: 1% 0;
+  background-color: #0F4C81;
+  border-radius: 32px;
+    color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnSalvarPlano {
+  width: 30%;
+  height: 10%;
+  background-color: #fff;
+  color: #0F4C81;
+  border: 1px solid #0F4C81;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka-m';
+  font-size: 1.4rem;
+  margin: 2% 0;
+}
+
+.inputPlanoFodase {
+  width: 60%;
+  height: 20%;
+  background-color: #fff;
+  border-radius: 99px;
+  border: none;
+  text-align: center;
+  color: #0F4C81;
+  font-family: 'Fredoka-m';
+  font-size: 1.4rem;
+  margin: 1%;
+}
+
+

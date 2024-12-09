@@ -1,78 +1,63 @@
-main.mainLogin {
-    background-image: url(../../utils/assets/background-form.svg);
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    font-family: 'Fredoka-r';
-    color: #ffffff;
-    padding: 0;
-    margin: 0;
-}
-form.formLogin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.logoLogin {
-    height: 8vh;
-    margin: 2vh 0 4vh 0;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-} 
-.logoLogin:hover {
-    transform: scale(1.05); 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.titleLogin {
-    height: 8vh;
-    font-size: 5vh;
+.loginContainer {
+  width: 100vw;  
+  height: 100vh;
+  background: url('../../asset/bg-dark.svg') no-repeat center center fixed;
+  background-size: cover;
 }
-.googleButtonLogin {
-    height: 30vh;
-    transition: .1s;
-    margin: 8vh 0 8vh 0;
-
-}
-.googleButtonLogin:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: .2s;
-    filter: drop-shadow(0px 0px 10px #ffffff);
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.redirectLogin {
-    cursor: pointer;
-    color: #CAE6FF;
+.subMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 64%;
 }
 
-.redirectLogin:hover {
-    text-decoration: underline;
+.mainLogo img {
+  height: 6vh;
 }
 
-@media (max-aspect-ratio: 4/3) {
-    .googleButtonLogin {
-        height: 25vh;
-        transition: .1s;
-        margin: 8vh 0 8vh 0;
+.welcomeText h1 {
+  font-size: 2.4rem;
+  font-family: 'Fredoka-m';
+  font-weight: 700;
+  color: #fff;
+}
 
-    }
-    .googleButtonLogin:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-        transition: .2s;
-        filter: drop-shadow(0px 0px 10px #ffffff);
-    }
-    .titleLogin {
-        height: 8vh;
-        font-size: 4vh;
-    }
+.signUpButton a, .signUpButton p {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Fredoka-r';
+  font-size: 1.4rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .signUpLogin{
-        font-size: 2vh;
-    }
+.signUpButton a:hover {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: underline;
+  filter: drop-shadow(0 0 10px rgba(78, 172, 255, 1));
+}
+
+.loginButton img {
+  height: 28vh;
+  transition: .5s;
+}
+
+.loginButton img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 20px  rgba(78, 172, 255, 1));
 }

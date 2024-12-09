@@ -1,111 +1,133 @@
-import React from "react";
+import { React } from "react";
 import styles from "./Login.module.css";
-import logo from "../../utils/assets/logo-light.svg";
-import googleButton from "../../utils/assets/google-button.svg";
-import {
-    useGoogleLogin,
-} from "@react-oauth/google";
-import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import api from "../../api";
+import logoLight from "../../asset/logo_light.svg";
+import googleIcon from "../../asset/googleBtn.svg";
+import { useGoogleLogin } from "@react-oauth/google";
 import Cookies from "js-cookie";
-
-
-
+import { Toaster } from "react-hot-toast";
+import { LoginSuccess, LoginNotFound } from "../../component/Toast/Toast";
+import api from "../../lib/client/api";
 const Login = () => {
-    const navigate = useNavigate();
+  async function handleGoogleSuccessCommon(credentialResponse) {
+    console.log(JSON.stringify(credentialResponse));
 
-    const [email, setEmail] = React.useState('');
-    const [sub, setSub] = React.useState('');
-
-    const handleGoogleSuccess = async (credentialResponse) => {
-        Cookies.set('access_token', credentialResponse.access_token, { expires: 1 }); // expires in 1 day
-        console.log(Cookies.get('access_token'));
-        await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ` + credentialResponse.access_token,
-            },
+    Cookies.set("access_token", credentialResponse.access_token);
+    await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ` + credentialResponse.access_token,
+      },
+    })
+      .then(async (response) => response.json())
+      .then(async (data) => {
+        console.log(data);
+        
+        await api.post('/auth/login', {
+          email: data.email,
+          googleSub: data.sub
+        }).then(res => {
+          LoginSuccess();
+          let jwtData = decodeJwt(res.data.token);
+          Cookies.set("JWT", res.data.token);
+          Cookies.set("email", JSON.stringify(jwtData.sub));
+          Cookies.set("tipoUsuario", JSON.stringify(jwtData.tipoUsuario).replace(/"/g, ''));
+          Cookies.set("id", JSON.stringify(jwtData.id).replace(/"/g, ''));
+          if(Cookies.get("tipoUsuario") === "psicologo"){
+            setTimeout(() => {
+              window.location.href = "/psipanel";
+            }, 1200);
+          } else {
+            setTimeout(() => {
+              window.location.href = "/pacpanel";
+            }, 1200);
+          }
+        }).catch(err => {
+          console.log(err);
+          if (err.response.status === 401) {
+            LoginNotFound();
+            setTimeout(() => {
+              window.location.href = "/register";
+            }, 2400);
+          }
         })
-            .then(response => response.json())
-            .then(async data => {
-                setEmail(data.email);
-                setSub(data.sub);
-                console.log(data.sub);
-                console.log("sub monstro");
-                api.post("auth/login",
-                    {
-                        email: data.email,
-                        googleSub: data.sub
-                    })
-                .then(async response => {
-
-                    const token = response.data.token
-                    console.log(token);
-                    console.log(response.data);
-                    const tokenSplitted = token.split('.');
-                    const tokenPayload = JSON.parse(atob(tokenSplitted[1]));
-                    console.log(tokenPayload)
-                    
-                    Cookies.set('id', tokenPayload.id);
-                    Cookies.set('token', token);
-                    console.log(Cookies.get('id'));
-                    console.log(Cookies.get('token'));
-                    console.log("CUKI");
-                    if(tokenPayload.tipoUsuario === "psicologo"){
-                        // cookie token
-                        Cookies.set('token', token);
-                        console.log(Cookies.get('token'))
-                        navigate("/psipanel")
-                    } else if(tokenPayload.tipoUsuario === "paciente"){
-                        // cookie token
-                        Cookies.set('token', token);
-                        console.log(Cookies.get('token'))
-                        navigate("/pacpanel")
-                    }
 
 
-                })
-                .catch(error => {
-                    console.log(error);
-                    toast.error('Você não possui uma conta, por favor, cadastre-se!')
-                    setTimeout(signUp(), 3000);
-                })
-            })
-    };
+      });
+  }
 
-    const handleGoogleFail = () => {
-        toast.error('Falha ao logar com o Google');
-    }
+  function handleGoogleErrorCommon(error) {
+    console.log(error);
+  }
 
+  const useGoogleLoginCommon = useGoogleLogin({
+    onSuccess: handleGoogleSuccessCommon,
+    onError: handleGoogleErrorCommon,
+    scope: ["openid", "profile", "email"].join(" "),
+    ux_mode: "pop-up",
+  });
 
-
-    const googleLogin = useGoogleLogin({
-        onSuccess: handleGoogleSuccess,
-        onError: handleGoogleFail,
-        ux_mode: 'popup'
-    });
-
-    const signUp = () => {
-        navigate('/cadastro');
-    }
-
-    const goToHomePage = () => {
-        navigate("/");
-      };
-
-    return (
-
-    <main className={styles.mainLogin}>
-        <form className={styles.formLogin}>
-            <img src={logo} alt="Logo" className={styles.logoLogin}  onClick={goToHomePage}/>
-            <h1 className={styles.titleLogin}>Bem vindo de volta</h1>
-            <img src={googleButton} alt="Botão Google" className={styles.googleButtonLogin} onClick={googleLogin} />
-            <span className={styles.signUpLogin}>Não possui uma conta? <span onClick={signUp} className={styles.redirectLogin}>Cadastre-se</span></span>
-        </form>
-    </main>
+  const decodeBase64Url = (base64Url) => {
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
     );
+    return JSON.parse(jsonPayload);
+  };
+  
+  const decodeJwt = (token) => {
+    try {
+      const [header, payload, signature] = token.split('.');
+      if (!payload) throw new Error('Invalid token');
+      console.log(header, payload, signature);
+
+      return decodeBase64Url(payload);
+    } catch (error) {
+      console.error('Token inválido', error);
+      return null;
+    }
+  };
+
+  return (
+    <>
+      <div className={styles.loginContainer}>
+        <div className={styles.main}>
+          <div className={styles.subMain}>
+            <div className={styles.mainLogo}>
+              <a href="/">
+                <img src={logoLight} alt="logo" />
+              </a>
+            </div>
+            <div className={styles.welcomeText}>
+              <h1>Bem vindo(a) de volta!</h1>
+            </div>
+            <div className={styles.loginButton}>
+              <img
+                src={googleIcon}
+                alt="google"
+                onClick={useGoogleLoginCommon}
+              />
+            </div>
+            <div className={styles.signUpButton}>
+              <p>
+                Não possui uma conta? <a href="/register">Cadastre-se</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            fontFamily: "Fredoka-r",
+          },
+        }}
+      />
+    </>
+  );
 };
 
 export default Login;
